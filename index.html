@@ -3,23 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yaumul Milad Kak Ula 💛💗 (ME Edition)</title>
+  <title>Yaumul Milad Kak Ula 💛💗 — Mechanical Retro</title>
   <style>
     :root{
       --pink:#ff3ea5;
       --hotpink:#ff1f8f;
       --yellow:#ffe24a;
-      --lemon:#fff2a6;
+      --lemon:#fff6b0;
       --ink:#1a1633;
-      --cream:#fff7df;
-      --shadow: rgba(0,0,0,.18);
       --outline:#241b4a;
+      --shadow: rgba(0,0,0,.18);
       --mint:#4dffcc;
       --blue:#4aa3ff;
       --steel:#cfd8e6;
       --steel2:#a9b6cc;
-      --oil:#2b2b3a;
+      --plate:#e8eef7;
+      --paper:#ffffff;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -29,12 +30,16 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       color:var(--ink);
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,62,165,.22) 0 18%, transparent 19%),
-        radial-gradient(circle at 80% 30%, rgba(255,226,74,.35) 0 16%, transparent 17%),
-        radial-gradient(circle at 60% 85%, rgba(77,255,204,.20) 0 18%, transparent 19%),
+        radial-gradient(circle at 20% 20%, rgba(255,62,165,.20) 0 18%, transparent 19%),
+        radial-gradient(circle at 80% 30%, rgba(255,226,74,.30) 0 16%, transparent 17%),
+        radial-gradient(circle at 60% 85%, rgba(77,255,204,.18) 0 18%, transparent 19%),
         linear-gradient(135deg, #fff3a6 0%, #ffd34a 40%, #ff6bbf 100%);
-      overflow:hidden;
+      /* ✅ FIX: allow scroll */
+      overflow-x:hidden;
+      overflow-y:auto;
     }
+
+    /* scanlines */
     body::before{
       content:"";
       position:fixed; inset:0;
@@ -46,13 +51,36 @@
         transparent 6px
       );
       pointer-events:none;
-      mix-blend-mode: multiply;
+      mix-blend-mode:multiply;
       opacity:.35;
+      z-index:1;
     }
 
-    canvas#fx{ position:fixed; inset:0; pointer-events:none; z-index:6; }
+    /* blueprint overlay (subtle) */
+    .blueprint{
+      position:fixed; inset:0;
+      pointer-events:none;
+      z-index:2;
+      opacity:.22;
+      background:
+        linear-gradient(to right, rgba(36,27,74,.18) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(36,27,74,.18) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask: radial-gradient(circle at 50% 40%, #000 0 55%, transparent 75%);
+    }
 
-    .floaty{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
+    canvas#fx{
+      position:fixed; inset:0;
+      pointer-events:none;
+      z-index:9;
+    }
+
+    .floaty{
+      position:fixed; inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:3;
+    }
     .blob{
       position:absolute;
       width:120px; height:120px;
@@ -70,7 +98,13 @@
       50%{ transform: translateY(-18px) rotate(calc(var(--r,10deg) * -1)); }
     }
 
-    .wrap{ width:min(1020px, 92vw); padding:22px; position:relative; z-index:2; }
+    .wrap{
+      width:min(1080px, 92vw);
+      padding:22px;
+      position:relative;
+      z-index:10;
+    }
+
     .card{
       background: rgba(255,247,223,.92);
       border:4px solid var(--outline);
@@ -80,42 +114,66 @@
       position:relative;
     }
 
-    /* floating gears in corners */
+    /* corner gears (mechanical signature) */
     .gearCorner{
       position:absolute;
-      width:120px; height:120px;
-      opacity:.9;
+      width:132px; height:132px;
       filter: drop-shadow(0 12px 0 rgba(0,0,0,.10));
-      z-index:1;
       pointer-events:none;
+      z-index:4;
     }
-    .gearCorner.left{ left:-34px; top:72px; transform: rotate(0deg); }
-    .gearCorner.right{ right:-46px; top:150px; transform: rotate(0deg) scale(.92); opacity:.75; }
+    .gearCorner.left{ left:-44px; top:78px; opacity:.9; }
+    .gearCorner.right{ right:-54px; top:160px; opacity:.78; transform:scale(.92); }
     .spin{ animation: spin 6s linear infinite; transform-origin:center; }
     .spinFast{ animation: spin 1.6s linear infinite; transform-origin:center; }
     @keyframes spin{ to{ transform: rotate(360deg); } }
 
+    /* mechanical decals: nuts/bolts floating */
+    .meDecals{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:4;
+      opacity:.85;
+    }
+    .decal{
+      position:absolute;
+      filter: drop-shadow(0 10px 0 rgba(0,0,0,.10));
+      opacity:.75;
+      animation: bob 7s ease-in-out infinite;
+    }
+    @keyframes bob{
+      0%,100%{ transform: translateY(0) rotate(0deg); }
+      50%{ transform: translateY(-14px) rotate(6deg); }
+    }
+    .decal.d1{ left:18px; bottom:26px; width:72px; animation-duration:8.2s;}
+    .decal.d2{ right:22px; bottom:20px; width:88px; animation-duration:9.6s;}
+    .decal.d3{ right:120px; top:86px; width:58px; animation-duration:7.8s; opacity:.6;}
+
     .topbar{
-      display:flex; align-items:center; gap:10px;
+      display:flex;
+      align-items:center;
+      gap:10px;
       padding:14px 16px;
       background: linear-gradient(90deg, var(--yellow), #fff7a8, var(--pink));
       border-bottom:4px solid var(--outline);
       position:relative;
-      z-index:2;
+      z-index:6;
     }
     .dots{display:flex; gap:8px; margin-right:6px;}
     .dot{
       width:14px; height:14px;
       border:3px solid var(--outline);
       border-radius:50%;
-      background: #fff;
-      box-shadow: 0 4px 0 rgba(0,0,0,.10);
+      background:#fff;
+      box-shadow:0 4px 0 rgba(0,0,0,.10);
     }
     .dot:nth-child(1){background:var(--pink)}
     .dot:nth-child(2){background:var(--yellow)}
     .dot:nth-child(3){background:var(--mint)}
     .title{
-      font-weight:900; letter-spacing:.5px;
+      font-weight:900;
+      letter-spacing:.5px;
       font-size: clamp(18px, 2.3vw, 22px);
       text-shadow: 2px 2px 0 #fff, 4px 4px 0 rgba(0,0,0,.12);
       margin:0;
@@ -127,9 +185,11 @@
       gap:18px;
       padding:18px;
       position:relative;
-      z-index:2;
+      z-index:6;
     }
-    @media (max-width: 900px){ .content{ grid-template-columns:1fr; } }
+    @media (max-width: 920px){
+      .content{ grid-template-columns:1fr; }
+    }
 
     .panel{
       border:4px dashed rgba(36,27,74,.35);
@@ -140,13 +200,54 @@
       overflow:hidden;
     }
 
+    /* rivet plate header */
+    .plateHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .plateBadge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:4px solid var(--outline);
+      border-radius:16px;
+      background: linear-gradient(180deg, var(--plate), #ffffff);
+      box-shadow: 0 10px 0 rgba(0,0,0,.10);
+      font-weight:900;
+    }
+    .plateBadge .rivets{
+      display:flex; gap:6px;
+    }
+    .rivet{
+      width:12px; height:12px;
+      border:3px solid var(--outline);
+      border-radius:50%;
+      background: var(--steel);
+      box-shadow: inset 0 -3px 0 rgba(0,0,0,.10);
+    }
+    .banner{
+      display:inline-block;
+      padding:8px 12px;
+      border:3px solid var(--outline);
+      border-radius:14px;
+      background: linear-gradient(90deg, var(--pink), var(--yellow));
+      box-shadow: 0 10px 0 rgba(0,0,0,.10);
+      font-weight:900;
+      white-space:nowrap;
+    }
+
     .hero{
       display:grid;
       grid-template-columns: 1fr auto;
       gap:14px;
       align-items:center;
+      margin-bottom:10px;
     }
-
     .big{
       margin:0;
       font-weight:900;
@@ -157,27 +258,19 @@
       text-shadow: 2px 2px 0 #fff, 4px 4px 0 rgba(0,0,0,.12);
     }
     .sub{ margin:8px 0 0; font-size: clamp(14px, 2vw, 16px); opacity:.92; }
+    .note{ margin:10px 0 0; font-size:13px; opacity:.9; }
 
-    .banner{
-      display:inline-block;
-      margin-top:10px;
-      padding:8px 12px;
-      border:3px solid var(--outline);
-      border-radius:14px;
-      background: linear-gradient(90deg, var(--pink), var(--yellow));
-      box-shadow: 0 10px 0 rgba(0,0,0,.10);
-      font-weight:900;
-    }
-
-    /* cute character */
+    /* mascot engineer */
     .char{
-      width:230px; aspect-ratio:1/1; position:relative;
-      display:grid; place-items:center;
+      width:230px; aspect-ratio:1/1;
+      position:relative;
+      display:grid;
+      place-items:center;
       filter: drop-shadow(0 14px 0 rgba(0,0,0,.12));
     }
     .char .body{
       width:170px; height:170px;
-      border-radius: 28px;
+      border-radius:28px;
       border:4px solid var(--outline);
       background:
         radial-gradient(circle at 35% 35%, rgba(255,255,255,.7) 0 22%, transparent 23%),
@@ -186,8 +279,7 @@
       box-shadow: inset 0 -10px 0 rgba(0,0,0,.06);
     }
     .ear{
-      position:absolute;
-      width:56px; height:56px;
+      position:absolute; width:56px; height:56px;
       border:4px solid var(--outline);
       border-radius:18px;
       background: linear-gradient(145deg, #ffd0ef, var(--pink));
@@ -196,16 +288,14 @@
     .ear.left{ left:18px; transform: rotate(-12deg);}
     .ear.right{ right:18px; transform: rotate(12deg);}
 
-    /* Engineer Helmet + goggles */
     .helmet{
-      position:absolute;
-      top:-10px; left:50%;
+      position:absolute; top:-10px; left:50%;
       transform: translateX(-50%);
       width:150px; height:70px;
       border:4px solid var(--outline);
       border-bottom:none;
       border-radius: 80px 80px 40px 40px;
-      background: linear-gradient(180deg, var(--yellow), #fff6b0);
+      background: linear-gradient(180deg, var(--yellow), var(--lemon));
       box-shadow: 0 10px 0 rgba(0,0,0,.08);
     }
     .helmet::after{
@@ -221,12 +311,12 @@
       box-shadow: 0 6px 0 rgba(0,0,0,.08);
       font-size:14px;
     }
+
     .goggles{
       position:absolute;
       top:62px; left:50%;
       transform: translateX(-50%);
-      display:flex; gap:10px;
-      align-items:center;
+      display:flex; gap:10px; align-items:center;
     }
     .lens{
       width:46px; height:30px;
@@ -234,14 +324,12 @@
       border-radius:14px;
       background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(77,255,204,.25));
       box-shadow: inset 0 -6px 0 rgba(0,0,0,.06);
-      position:relative;
     }
     .bridge{
       width:16px; height:8px;
       border:4px solid var(--outline);
       border-left:none; border-right:none;
       border-radius:10px;
-      background: transparent;
     }
 
     .face{ position:absolute; inset:0; display:grid; place-items:center; }
@@ -276,43 +364,51 @@
     }
     .cheek{ position:absolute; width:18px; height:10px; border-radius:10px; background: rgba(255,62,165,.35); top:104px; }
     .cheek.left{ left:34px;} .cheek.right{ right:34px;}
-
     .nameTag{
       position:absolute; bottom:-16px;
       padding:7px 12px;
       border:4px solid var(--outline);
       border-radius:14px;
-      background: #fff;
+      background:#fff;
       font-weight:900;
       box-shadow: 0 10px 0 rgba(0,0,0,.10);
     }
 
-    /* cake */
+    /* cake + candles (fixed visibility) */
     .cakeWrap{
       margin-top:12px;
       display:flex; gap:14px; flex-wrap:wrap;
       align-items:flex-end; justify-content:space-between;
     }
     .cake{
-      width:min(420px, 100%);
-      height:170px;
+      width:min(440px, 100%);
+      height:180px;
       position:relative;
       border:4px solid var(--outline);
       border-radius:18px;
       background:
         repeating-linear-gradient(45deg, rgba(255,62,165,.20) 0 10px, rgba(255,226,74,.24) 10px 20px);
       box-shadow: 0 14px 0 rgba(0,0,0,.10);
-      overflow:hidden;
+      overflow: visible; /* ✅ IMPORTANT: do not clip candles */
     }
     .cake::before{
       content:"";
       position:absolute; left:0; right:0; bottom:0;
       height:55%;
       background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.0));
+      border-radius:0 0 14px 14px;
     }
-    .icing{ position:absolute; left:0; right:0; top:0; height:56px; background: linear-gradient(90deg, var(--pink), #ffc1e6, var(--yellow)); border-bottom:4px solid var(--outline); }
+    .icing{
+      position:absolute; left:0; right:0; top:0;
+      height:58px;
+      background: linear-gradient(90deg, var(--pink), #ffc1e6, var(--yellow));
+      border-bottom:4px solid var(--outline);
+      border-radius:14px 14px 0 0;
+    }
     .drip{
-      position:absolute; top:42px; width:26px; height:40px;
+      position:absolute;
+      top:42px;
+      width:26px; height:40px;
       background: linear-gradient(180deg, #ffc1e6, rgba(255,193,230,.0));
       border-left:4px solid var(--outline);
       border-right:4px solid var(--outline);
@@ -321,17 +417,21 @@
       opacity:.9;
     }
     .drip:nth-child(2){ left:40px;}
-    .drip:nth-child(3){ left:120px; height:46px;}
-    .drip:nth-child(4){ left:210px; height:38px;}
-    .drip:nth-child(5){ left:310px; height:50px;}
+    .drip:nth-child(3){ left:130px; height:46px;}
+    .drip:nth-child(4){ left:230px; height:38px;}
+    .drip:nth-child(5){ left:330px; height:50px;}
 
     .candles{
-      position:absolute; top:-34px; left:50%;
+      position:absolute;
+      top:-10px; /* ✅ safer than -34px */
+      left:50%;
       transform: translateX(-50%);
       display:flex; gap:14px;
+      z-index:6;
+      pointer-events:none;
     }
     .candle{
-      width:16px; height:42px;
+      width:16px; height:46px;
       border:4px solid var(--outline);
       border-radius:10px;
       background: linear-gradient(180deg, #fff, var(--yellow));
@@ -341,45 +441,51 @@
     .candle:nth-child(2){ background: linear-gradient(180deg, #fff, #ffd0ef); }
     .candle:nth-child(3){ background: linear-gradient(180deg, #fff, var(--mint)); }
     .flame{
-      position:absolute; top:-24px; left:50%;
+      position:absolute; top:-26px; left:50%;
       transform: translateX(-50%);
       width:18px; height:22px;
       border:4px solid var(--outline);
-      border-radius: 50%;
+      border-radius:50%;
       background: radial-gradient(circle at 45% 35%, #fff 0 22%, var(--yellow) 23% 60%, var(--hotpink) 61% 100%);
       animation: flicker .15s infinite alternate;
       transform-origin: bottom center;
+      transition: opacity .22s ease, transform .22s ease;
     }
     @keyframes flicker{
       from{ transform: translateX(-50%) rotate(-3deg) scale(1.02); }
       to{ transform: translateX(-50%) rotate(3deg) scale(.98); }
     }
-    .flame.off{ opacity:0; transform: translateX(-50%) scale(.4); animation:none; }
+    .flame.off{ opacity:0; transform: translateX(-50%) scale(.2); animation:none; }
 
+    /* buttons */
     .controls{
-      display:flex; gap:10px; flex-wrap:wrap;
-      justify-content:flex-end; align-items:center;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
     }
     button{
       border:4px solid var(--outline);
-      background: #fff;
-      border-radius: 14px;
+      background:#fff;
+      border-radius:14px;
       padding:10px 12px;
       font-weight:900;
       cursor:pointer;
       box-shadow: 0 10px 0 rgba(0,0,0,.10);
       transition: transform .06s ease;
       user-select:none;
+      white-space:nowrap;
     }
     button:active{ transform: translateY(4px); box-shadow:0 6px 0 rgba(0,0,0,.10); }
     .btnPink{ background: linear-gradient(90deg, var(--pink), #ffd0ef); }
-    .btnYellow{ background: linear-gradient(90deg, var(--yellow), #fff6b0); }
+    .btnYellow{ background: linear-gradient(90deg, var(--yellow), var(--lemon)); }
     .btnMint{ background: linear-gradient(90deg, var(--mint), #d8fff2); }
     .btnSteel{ background: linear-gradient(90deg, var(--steel), #ffffff); }
 
-    .note{ margin:10px 0 0; font-size:13px; opacity:.88; }
     .kbd{
-      display:inline-block; padding:2px 8px;
+      display:inline-block;
+      padding:2px 8px;
       border:3px solid var(--outline);
       border-radius:10px;
       background:#fff;
@@ -387,10 +493,10 @@
       font-size:12px;
     }
 
-    /* Right panel: ME toys */
+    /* balloons game */
     .balloons{
       position:relative;
-      height:190px;
+      height:170px;
       border:4px solid rgba(36,27,74,.18);
       border-radius:18px;
       background:
@@ -405,7 +511,7 @@
       border:4px solid var(--outline);
       border-radius: 50% 50% 48% 48%;
       box-shadow: 0 12px 0 rgba(0,0,0,.08);
-      animation: floatUp 6.5s ease-in-out infinite;
+      animation: floatUp 6.3s ease-in-out infinite;
     }
     .balloon::after{
       content:"";
@@ -425,19 +531,20 @@
     }
     @keyframes floatUp{
       0%{ transform: translateY(0) translateX(0) rotate(-2deg); }
-      50%{ transform: translateY(-190px) translateX(10px) rotate(2deg); }
+      50%{ transform: translateY(-175px) translateX(10px) rotate(2deg); }
       100%{ transform: translateY(0) translateX(0) rotate(-2deg); }
     }
 
-    /* Mechanical block */
+    /* ME block: gauge + slider crank */
     .meBlock{
       margin-top:12px;
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:1fr 1fr;
       gap:12px;
     }
-    @media (max-width:900px){ .meBlock{ grid-template-columns:1fr; } }
-
+    @media (max-width: 920px){
+      .meBlock{ grid-template-columns:1fr; }
+    }
     .meCard{
       border:4px solid var(--outline);
       border-radius:18px;
@@ -449,37 +556,31 @@
     }
     .meHead{ font-weight:900; margin:0 0 8px; display:flex; align-items:center; gap:8px; }
 
-    /* Gauge */
+    /* gauge */
     .gauge{
-      width:100%;
-      height:120px;
+      height:130px;
       display:grid;
       place-items:center;
-      position:relative;
     }
     .dial{
-      width:120px; height:120px;
+      width:124px; height:124px;
       border:4px solid var(--outline);
       border-radius:50%;
-      background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.9), rgba(207,216,230,.45));
+      background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), rgba(207,216,230,.50));
       box-shadow: inset 0 -10px 0 rgba(0,0,0,.06);
       position:relative;
     }
-    .dial::after{
-      content:"kPa";
-      position:absolute;
-      bottom:18px; left:50%;
-      transform: translateX(-50%);
-      font-weight:900;
-      font-size:12px;
-      padding:2px 8px;
-      border:3px solid var(--outline);
-      border-radius:10px;
-      background:#fff;
-      box-shadow: 0 6px 0 rgba(0,0,0,.08);
+    .ticks{
+      position:absolute; inset:10px;
+      border-radius:50%;
+      background:
+        conic-gradient(from -120deg,
+          rgba(36,27,74,.25) 0 3deg, transparent 3deg 12deg);
+      mask: radial-gradient(circle, transparent 0 60%, #000 61% 100%);
+      opacity:.55;
     }
     .needle{
-      width:4px; height:46px;
+      width:4px; height:48px;
       background: var(--outline);
       position:absolute;
       left:50%; top:50%;
@@ -496,36 +597,39 @@
       left:50%; top:50%;
       transform: translate(-50%,-50%);
     }
-    .ticks{
-      position:absolute; inset:10px;
-      border-radius:50%;
-      background:
-        conic-gradient(from -120deg,
-          rgba(36,27,74,.25) 0 3deg, transparent 3deg 12deg);
-      mask: radial-gradient(circle, transparent 0 60%, #000 61% 100%);
-      opacity:.55;
+    .dial::after{
+      content:"kPa";
+      position:absolute;
+      bottom:18px; left:50%;
+      transform: translateX(-50%);
+      font-weight:900;
+      font-size:12px;
+      padding:2px 8px;
+      border:3px solid var(--outline);
+      border-radius:10px;
+      background:#fff;
+      box-shadow: 0 6px 0 rgba(0,0,0,.08);
     }
 
-    /* Slider-crank (piston) */
+    /* slider crank */
     .crank{
-      height:120px;
+      height:130px;
       position:relative;
       border-radius:14px;
       border:4px dashed rgba(36,27,74,.35);
       overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.6), rgba(255,255,255,.2));
+      background: linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.20));
     }
     .rail{
-      position:absolute; left:10px; right:10px; top:56px; height:8px;
+      position:absolute; left:10px; right:10px; top:62px; height:8px;
       border:4px solid var(--outline);
       border-left:none; border-right:none;
       background: rgba(36,27,74,.05);
       border-radius:10px;
     }
     .flywheel{
-      position:absolute; left:14px; top:18px;
-      width:84px; height:84px;
+      position:absolute; left:14px; top:20px;
+      width:88px; height:88px;
       border:4px solid var(--outline);
       border-radius:50%;
       background: radial-gradient(circle at 30% 25%, #fff, rgba(207,216,230,.55));
@@ -556,12 +660,12 @@
     }
     .piston{
       position:absolute;
-      width:64px; height:40px;
+      width:66px; height:42px;
       border:4px solid var(--outline);
       border-radius:14px;
       background: linear-gradient(180deg, #fff, rgba(207,216,230,.55));
       box-shadow: inset 0 -8px 0 rgba(0,0,0,.06);
-      top:40px;
+      top:44px;
     }
     .piston::after{
       content:"";
@@ -573,7 +677,61 @@
       border-radius:10px;
     }
 
-    /* footer */
+    /* fortune cookie */
+    .fortuneWrap{
+      margin-top:12px;
+      border:4px solid var(--outline);
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.20));
+      box-shadow: 0 14px 0 rgba(0,0,0,.10);
+      padding:12px;
+      overflow:hidden;
+      position:relative;
+    }
+    .fortuneHead{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    .cookieStage{
+      display:grid;
+      grid-template-columns:1fr;
+      place-items:center;
+      gap:10px;
+    }
+    .cookie{
+      width:220px; height:110px;
+      position:relative;
+      filter: drop-shadow(0 12px 0 rgba(0,0,0,.10));
+    }
+    .half{
+      position:absolute;
+      top:0; width:110px; height:110px;
+      border:4px solid var(--outline);
+      border-radius: 60px 60px 18px 18px;
+      background: linear-gradient(180deg, #ffe9a8, #ffd26b);
+      box-shadow: inset 0 -10px 0 rgba(0,0,0,.06);
+      transition: transform .35s ease;
+    }
+    .half.left{ left:0; transform-origin: 100% 60%; }
+    .half.right{ right:0; transform-origin: 0% 60%; }
+    .cookie.cracked .half.left{ transform: rotate(-18deg) translateX(-10px); }
+    .cookie.cracked .half.right{ transform: rotate(18deg) translateX(10px); }
+
+    .paper{
+      width:100%;
+      border:4px solid var(--outline);
+      border-radius:16px;
+      background: var(--paper);
+      box-shadow: 0 10px 0 rgba(0,0,0,.10);
+      padding:10px 12px;
+      font-weight:900;
+      text-align:center;
+      line-height:1.25;
+    }
+    .paper small{ display:block; opacity:.85; font-weight:800; margin-top:6px; }
+
     .footer{
       padding:12px 16px;
       border-top:4px solid var(--outline);
@@ -584,12 +742,13 @@
       flex-wrap:wrap;
       font-weight:900;
       position:relative;
-      z-index:2;
+      z-index:6;
     }
   </style>
 </head>
 <body>
   <canvas id="fx"></canvas>
+  <div class="blueprint" aria-hidden="true"></div>
 
   <div class="floaty" aria-hidden="true">
     <div class="blob b1" style="--r:10deg"></div>
@@ -600,15 +759,51 @@
   <div class="wrap">
     <div class="card">
 
+      <!-- mechanical decals -->
+      <div class="meDecals" aria-hidden="true">
+        <!-- nut -->
+        <svg class="decal d1" viewBox="0 0 100 100">
+          <path d="M50 8 L76 22 L92 50 L76 78 L50 92 L24 78 L8 50 L24 22 Z"
+                fill="url(#nutG)" stroke="var(--outline)" stroke-width="4"/>
+          <circle cx="50" cy="50" r="18" fill="rgba(255,255,255,.6)" stroke="var(--outline)" stroke-width="4"/>
+          <defs>
+            <linearGradient id="nutG" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="0.55" stop-color="#cfd8e6"/>
+              <stop offset="1" stop-color="#a9b6cc"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <!-- bolt head -->
+        <svg class="decal d2" viewBox="0 0 120 120">
+          <path d="M60 10 L92 28 L110 60 L92 92 L60 110 L28 92 L10 60 L28 28 Z"
+                fill="url(#boltG)" stroke="var(--outline)" stroke-width="5"/>
+          <path d="M42 58 L78 44 L76 54 L92 50 L76 74 L78 62 Z"
+                fill="rgba(36,27,74,.20)" stroke="var(--outline)" stroke-width="4" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="boltG" x1="1" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="0.55" stop-color="#cfd8e6"/>
+              <stop offset="1" stop-color="#a9b6cc"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <!-- tiny washer -->
+        <svg class="decal d3" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="34" fill="rgba(207,216,230,.65)" stroke="var(--outline)" stroke-width="4"/>
+          <circle cx="50" cy="50" r="14" fill="rgba(255,255,255,.75)" stroke="var(--outline)" stroke-width="4"/>
+        </svg>
+      </div>
+
       <!-- corner gears -->
       <svg class="gearCorner left" viewBox="0 0 100 100" aria-hidden="true">
-        <g id="g1" class="spin" fill="none" stroke="none">
-          <path fill="url(#steelGrad)" d="M50 10l6 4 8-2 5 6 8 1 2 8 7 4-2 8 4 7-6 5 1 8-8 2-4 7-8-2-6 4-6-4-8 2-5-6-8-1-2-8-7-4 2-8-4-7 6-5-1-8 8-2 4-7 8 2z"/>
+        <g id="gLeft" class="spin">
+          <path fill="url(#steelGradA)" d="M50 10l6 4 8-2 5 6 8 1 2 8 7 4-2 8 4 7-6 5 1 8-8 2-4 7-8-2-6 4-6-4-8 2-5-6-8-1-2-8-7-4 2-8-4-7 6-5-1-8 8-2 4-7 8 2z"/>
           <circle cx="50" cy="50" r="22" fill="rgba(255,255,255,.65)" stroke="var(--outline)" stroke-width="4"/>
           <circle cx="50" cy="50" r="6" fill="var(--pink)" stroke="var(--outline)" stroke-width="4"/>
         </g>
         <defs>
-          <linearGradient id="steelGrad" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient id="steelGradA" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#ffffff"/>
             <stop offset="0.55" stop-color="#cfd8e6"/>
             <stop offset="1" stop-color="#a9b6cc"/>
@@ -617,13 +812,13 @@
       </svg>
 
       <svg class="gearCorner right" viewBox="0 0 100 100" aria-hidden="true">
-        <g class="spin" fill="none" stroke="none">
-          <path fill="url(#steelGrad2)" d="M50 12l5 3 8-1 5 5 8 1 2 8 7 4-2 8 4 7-6 5 1 8-8 2-4 7-8-2-5 3-5-3-8 2-5-5-8-1-2-8-7-4 2-8-4-7 6-5-1-8 8-2 4-7 8 1z"/>
+        <g id="gRight" class="spin">
+          <path fill="url(#steelGradB)" d="M50 12l5 3 8-1 5 5 8 1 2 8 7 4-2 8 4 7-6 5 1 8-8 2-4 7-8-2-5 3-5-3-8 2-5-5-8-1-2-8-7-4 2-8-4-7 6-5-1-8 8-2 4-7 8 1z"/>
           <circle cx="50" cy="50" r="18" fill="rgba(255,255,255,.55)" stroke="var(--outline)" stroke-width="4"/>
           <circle cx="50" cy="50" r="6" fill="var(--yellow)" stroke="var(--outline)" stroke-width="4"/>
         </g>
         <defs>
-          <linearGradient id="steelGrad2" x1="1" y1="0" x2="0" y2="1">
+          <linearGradient id="steelGradB" x1="1" y1="0" x2="0" y2="1">
             <stop offset="0" stop-color="#ffffff"/>
             <stop offset="0.55" stop-color="#cfd8e6"/>
             <stop offset="1" stop-color="#a9b6cc"/>
@@ -637,8 +832,16 @@
       </div>
 
       <div class="content">
-        <!-- LEFT -->
+        <!-- LEFT PANEL -->
         <div class="panel">
+          <div class="plateHead">
+            <div class="plateBadge">
+              🛠️ ME Celebration Plate
+              <span class="rivets"><span class="rivet"></span><span class="rivet"></span><span class="rivet"></span></span>
+            </div>
+            <span class="banner">Yaumul Milad Kak Ula 💛💗</span>
+          </div>
+
           <div class="hero">
             <div>
               <p class="big">Yaumul Milad<br/>Kak Ula 💛💗</p>
@@ -647,7 +850,12 @@
                 <span class="banner">⚙️ ME MODE: ON ⚙️</span>
               </p>
               <p class="note">
-                Tip: <span class="kbd">Space</span> confetti • <span class="kbd">B</span> tiup lilin • <span class="kbd">T</span> turbo gear
+                Shortcut:
+                <span class="kbd">Space</span> confetti •
+                <span class="kbd">B</span> tiup lilin •
+                <span class="kbd">L</span> nyalakan lagi •
+                <span class="kbd">F</span> fortune •
+                <span class="kbd">T</span> turbo
               </p>
             </div>
 
@@ -681,7 +889,7 @@
             <div class="cake" id="cake">
               <div class="icing"></div>
               <div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div>
-              <div class="candles" id="candles">
+              <div class="candles">
                 <div class="candle"><div class="flame"></div></div>
                 <div class="candle"><div class="flame"></div></div>
                 <div class="candle"><div class="flame"></div></div>
@@ -691,21 +899,24 @@
             <div class="controls">
               <button class="btnPink" id="btnConfetti">🎉 Confetti!</button>
               <button class="btnYellow" id="btnBlow">💨 Tiup lilin</button>
-              <button class="btnMint" id="btnWish">💌 Doa acak</button>
+              <button class="btnSteel" id="btnRelight">🔥 Nyalakan lagi</button>
+              <button class="btnMint" id="btnWish">💌 Ucapan bahagia</button>
               <button class="btnSteel" id="btnTurbo">⚙️ Turbo Gear</button>
             </div>
           </div>
 
-          <p class="note" id="wishText" style="margin-top:12px;font-weight:900;">
-            Doa: “Semoga Kak Ula selalu bahagia dan dikelilingi orang-orang baik.” 🌷
+          <p class="note" style="font-weight:900;margin-top:12px;">
+            Status lilin: <span id="candleState">MENYALA</span>
+          </p>
+
+          <p class="note" id="wishText" style="font-weight:900;">
+            Ucapan: “Semoga Kak Ula selalu bahagia dan dikelilingi orang-orang baik.” 🌷
           </p>
         </div>
 
-        <!-- RIGHT -->
+        <!-- RIGHT PANEL -->
         <div class="panel">
-          <div class="balloons" id="balloons" aria-label="Balon retro">
-            <!-- balloons injected -->
-          </div>
+          <div class="balloons" id="balloons" aria-label="Balon retro"></div>
 
           <div style="margin-top:12px">
             <p style="margin:0;font-weight:900;font-size:16px;">Mini Game Retro 🎮</p>
@@ -724,14 +935,14 @@
                 </div>
               </div>
               <p class="note" style="margin:6px 0 0;font-weight:900;">
-                Pressure: <span id="pressureVal">0</span> kPa
+                Pressure: <span id="pressureVal">18</span> kPa
               </p>
-              <p class="note">Naik kalau kamu pencet Turbo / confetti 🎉</p>
+              <p class="note">Naik kalau kamu pencet Turbo / confetti / pop balon 🎉</p>
             </div>
 
             <div class="meCard">
               <p class="meHead">⚙️ Slider-Crank (Piston)</p>
-              <div class="crank" id="crank">
+              <div class="crank">
                 <div class="rail"></div>
                 <div class="flywheel" id="flywheel">
                   <div class="crankPin" id="pin"></div>
@@ -740,16 +951,42 @@
                 <div class="piston" id="piston"></div>
               </div>
               <p class="note" style="margin:6px 0 0;">
-                Ini simulasi sederhana mekanisme mesin: flywheel → connecting rod → piston.
+                Flywheel → connecting rod → piston (animasi mekanisme mesin).
               </p>
             </div>
+          </div>
+
+          <div class="fortuneWrap">
+            <div class="fortuneHead">
+              <span>🥠 Fortune Cookie (Doa Baik)</span>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="btnYellow" id="btnFortune">🥠 Buka cookie</button>
+                <button class="btnSteel" id="btnResetCookie">🔁 Reset</button>
+              </div>
+            </div>
+
+            <div class="cookieStage">
+              <div class="cookie" id="cookie">
+                <div class="half left"></div>
+                <div class="half right"></div>
+              </div>
+
+              <div class="paper" id="fortunePaper">
+                Klik “Buka cookie” ya ✨
+                <small>(Tekan <b>F</b> juga bisa)</small>
+              </div>
+            </div>
+
+            <p class="note" style="margin-top:10px">
+              Dari Dwi yang selalu Happy Kiyowo 💛💗
+            </p>
           </div>
         </div>
       </div>
 
       <div class="footer">
-        <span>Made with 💛💗 + retro gears</span>
-        <span>Shortcut: <span class="kbd">Space</span> confetti • <span class="kbd">B</span> blow • <span class="kbd">T</span> turbo</span>
+        <span>Mechanical vibes: gears • piston • gauge • nuts/bolts • blueprint</span>
+        <span>Shortcut: <span class="kbd">Space</span> • <span class="kbd">B</span> • <span class="kbd">L</span> • <span class="kbd">F</span> • <span class="kbd">T</span></span>
       </div>
     </div>
   </div>
@@ -774,8 +1011,8 @@
         const b = document.createElement('div');
         b.className = 'balloon';
         b.style.left = (6 + i*11) + '%';
-        b.style.animationDelay = (Math.random()*2.2) + 's';
-        b.style.animationDuration = (5.5 + Math.random()*2.8) + 's';
+        b.style.animationDelay = (Math.random()*2.0) + 's';
+        b.style.animationDuration = (5.6 + Math.random()*2.6) + 's';
         b.style.background = colors[i % colors.length];
 
         const s = document.createElement('div');
@@ -784,14 +1021,16 @@
 
         b.addEventListener('click', (e)=>{
           e.stopPropagation();
-          popAt(e.clientX, e.clientY, 26);
+          popAt(e.clientX, e.clientY, 24);
           b.style.transition = 'transform .12s ease, opacity .12s ease';
           b.style.transform = 'scale(0.2) rotate(18deg)';
           b.style.opacity = '0';
+
           score++;
           scoreEl.textContent = score;
           burstConfetti(score % 3 === 0 ? 140 : 70);
           addPressure(12);
+
           setTimeout(()=>{ b.remove(); }, 160);
         });
 
@@ -803,33 +1042,96 @@
 
     // ====== CANDLES ======
     const flames = [...document.querySelectorAll('.flame')];
-    function setFlames(on){ flames.forEach(f => f.classList.toggle('off', !on)); }
-    function anyFlameOn(){ return flames.some(f => !f.classList.contains('off')); }
+    const candleState = document.getElementById('candleState');
+
+    function setFlames(on){
+      flames.forEach(f => f.classList.toggle('off', !on));
+      candleState.textContent = on ? "MENYALA" : "PADAM";
+    }
     function blowCandles(){
       setFlames(false);
-      burstConfetti(170);
-      popAt(window.innerWidth*0.5, window.innerHeight*0.55, 48);
+      burstConfetti(160);
+      popAt(window.innerWidth*0.50, window.innerHeight*0.45, 44);
       addPressure(18);
-      setTimeout(()=> setFlames(true), 2600);
+    }
+    function relightCandles(){
+      setFlames(true);
+      burstConfetti(90);
+      addPressure(6);
     }
     document.getElementById('btnBlow').addEventListener('click', blowCandles);
+    document.getElementById('btnRelight').addEventListener('click', relightCandles);
 
-    // ====== WISHES ======
-    const wishes = [
-      "Semoga Kak Ula selalu sehat, tenang, dan dimudahkan rezekinya. 🤍",
-      "Semoga setiap langkah Kak Ula penuh berkah dan bahagia. ✨",
-      "Semoga Kak Ula makin sukses, makin kuat, dan makin bersinar. 🌟",
-      "Semoga Kak Ula dikelilingi orang-orang baik dan hati yang lapang. 🌷",
-      "Semoga Kak Ula dapat yang terbaik, di dunia dan akhirat. 🤲",
-      "Semoga hari ini jadi start untuk banyak hal indah yang datang. 💛💗"
-    ];
+    // ====== WISH GENERATOR ======
     const wishText = document.getElementById('wishText');
+    const fixedWishes = [
+      "Semoga Kak Ula lancar PhD-nya, proposalnya kuat, dan publikasinya dimudahkan. 🎓✨",
+      "Semoga Kak Ula makin cantik, makin happy, dan makin percaya diri. 💗🌸",
+      "Semoga Kak Ula dimudahkan semua urusannya, dilancarkan rezekinya, dan hatinya tenang. 🤲🤍",
+      "Semoga Kak Ula selalu sehat, kuat, dan dikelilingi orang-orang baik. 🌷",
+      "Semoga hari-hari Kak Ula penuh kabar baik dan momen yang bikin senyum. 😊💛"
+    ];
+    const openers = ["Semoga", "Bismillah, semoga", "InsyaAllah, semoga", "Dengan doa terbaik, semoga"];
+    const subjects = ["Kak Ula", "Kak Ula hari ini", "Kak Ula ke depannya", "setiap langkah Kak Ula"];
+    const goodies = [
+      "dilimpahi kesehatan dan hati yang tenang",
+      "diberi kelancaran dalam PhD dan risetnya",
+      "dimudahkan semua urusan dan rezekinya berkah",
+      "dikelilingi orang-orang baik dan support system yang hangat",
+      "makin cantik, makin bahagia, dan makin percaya diri",
+      "dapat kabar-kabar manis yang bikin semangat",
+      "dapat keberuntungan kecil setiap hari yang bikin senyum"
+    ];
+    const closers = ["Aamiin 🤲", "Aamiin ya Rabb 💛", "Aamiin… yang indah-indah datang ya ✨", "Aamiin, barakallahu fiik 🌷"];
+
+    function genHappyWish(){
+      const a = openers[Math.floor(Math.random()*openers.length)];
+      const b = subjects[Math.floor(Math.random()*subjects.length)];
+      const g1 = goodies[Math.floor(Math.random()*goodies.length)];
+      let g2 = goodies[Math.floor(Math.random()*goodies.length)];
+      if(g2 === g1) g2 = goodies[(goodies.indexOf(g1)+1) % goodies.length];
+      const c = closers[Math.floor(Math.random()*closers.length)];
+      return `${a} ${b} ${g1}, ${g2}. ${c}`;
+    }
+
     document.getElementById('btnWish').addEventListener('click', ()=>{
-      const w = wishes[Math.floor(Math.random()*wishes.length)];
-      wishText.textContent = "Doa: “" + w + "”";
-      burstConfetti(90);
+      const pick = Math.random() < 0.55
+        ? fixedWishes[Math.floor(Math.random()*fixedWishes.length)]
+        : genHappyWish();
+      wishText.textContent = `Ucapan: “${pick}”`;
+      burstConfetti(110);
       addPressure(8);
     });
+
+    // ====== FORTUNE COOKIE ======
+    const cookie = document.getElementById('cookie');
+    const fortunePaper = document.getElementById('fortunePaper');
+
+    const fortuneLines = [
+      "🥠 Semoga Kak Ula lancar PhD-nya, proposalnya kuat, dan publikasinya dimudahkan. 🎓✨",
+      "🥠 Semoga Kak Ula makin cantik, makin bahagia, dan makin percaya diri. 💗🌸",
+      "🥠 Semoga Kak Ula dimudahkan semua urusannya dan rezekinya berkah. 🤲🤍",
+      "🥠 Semoga setiap hari ada kabar baik yang bikin senyum. 😊💛",
+      "🥠 Semoga mimpi-mimpi Kak Ula satu per satu jadi kenyataan. 🌟",
+      "🥠 Semoga Allah mudahkan jalan Kak Ula dan beri keberkahan di setiap langkah. Aamiin 🤲"
+    ];
+
+    function openFortune(){
+      cookie.classList.add('cracked');
+      const pick = Math.random() < 0.6
+        ? fortuneLines[Math.floor(Math.random()*fortuneLines.length)]
+        : "🥠 " + genHappyWish();
+      fortunePaper.innerHTML = `${pick}<small>(Klik Reset kalau mau buka lagi)</small>`;
+      burstConfetti(140);
+      addPressure(10);
+    }
+    function resetCookie(){
+      cookie.classList.remove('cracked');
+      fortunePaper.innerHTML = `Klik “Buka cookie” ya ✨<small>(Tekan <b>F</b> juga bisa)</small>`;
+      burstConfetti(70);
+    }
+    document.getElementById('btnFortune').addEventListener('click', openFortune);
+    document.getElementById('btnResetCookie').addEventListener('click', resetCookie);
 
     // ====== CONFETTI FX ======
     const canvas = document.getElementById('fx');
@@ -861,6 +1163,7 @@
         });
       }
     }
+
     function popAt(cx, cy, n=20){
       for(let i=0;i<n;i++){
         confetti.push({
@@ -877,6 +1180,7 @@
         });
       }
     }
+
     function tick(){
       ctx.clearRect(0,0,W,H);
       for(let i=confetti.length-1;i>=0;i--){
@@ -900,7 +1204,12 @@
     }
     tick();
 
-    // ====== ME: Gauge + Turbo + Piston ======
+    document.getElementById('btnConfetti').addEventListener('click', ()=>{
+      burstConfetti(160);
+      addPressure(10);
+    });
+
+    // ====== ME: Gauge + Turbo + Slider-Crank ======
     const needle = document.getElementById('needle');
     const pressureVal = document.getElementById('pressureVal');
     const flywheel = document.getElementById('flywheel');
@@ -908,15 +1217,13 @@
     const rod = document.getElementById('rod');
     const piston = document.getElementById('piston');
 
-    let pressure = 18;          // kPa (display only)
+    let pressure = 18;
     let turbo = false;
-    let omega = 0.045;          // angular step per frame
+    let omega = 0.045;
     let angle = 0;
 
-    function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
-
+    function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
     function setGauge(p){
-      // map pressure 0..120 kPa => needle angle -60..+60 deg
       const pp = clamp(p, 0, 120);
       const deg = -60 + (pp/120)*120;
       needle.style.transform = `translateX(-50%) translateY(-90%) rotate(${deg}deg)`;
@@ -925,56 +1232,54 @@
     function addPressure(x){
       pressure = clamp(pressure + x, 0, 120);
       setGauge(pressure);
-      // decay later
       clearTimeout(addPressure._t);
-      addPressure._t = setTimeout(()=>{ pressure = clamp(pressure - 10, 0, 120); setGauge(pressure); }, 800);
+      addPressure._t = setTimeout(()=>{
+        pressure = clamp(pressure - 10, 0, 120);
+        setGauge(pressure);
+      }, 900);
     }
     setGauge(pressure);
 
     function setTurbo(on){
       turbo = on;
-      // speed up gear animation visually by toggling class
-      document.querySelectorAll('.gearCorner g').forEach(g=>{
+      omega = turbo ? 0.12 : 0.045;
+
+      // switch gear animation class
+      const gL = document.getElementById('gLeft');
+      const gR = document.getElementById('gRight');
+      [gL,gR].forEach(g=>{
         g.classList.toggle('spinFast', turbo);
         g.classList.toggle('spin', !turbo);
       });
-      omega = turbo ? 0.12 : 0.045;
+
       if(turbo){
         burstConfetti(120);
         addPressure(24);
       }
     }
+    document.getElementById('btnTurbo').addEventListener('click', ()=> setTurbo(!turbo));
 
-    document.getElementById('btnTurbo').addEventListener('click', ()=>{
-      setTurbo(!turbo);
-    });
-
-    // slider-crank animation
     function mechTick(){
       angle += omega;
-      const R = 26;          // crank radius
-      const L = 86;          // rod length
-      const cx = 14 + 42;    // flywheel center x (flywheel left + radius)
-      const cy = 18 + 42;    // flywheel center y
-      // crank pin position
+      const R = 26;  // crank radius
+      const L = 86;  // rod length
+      const cx = 14 + 44;
+      const cy = 20 + 44;
+
       const px = cx + R*Math.cos(angle);
       const py = cy + R*Math.sin(angle);
       pin.style.left = px + "px";
       pin.style.top  = py + "px";
 
-      // slider line y ~ 60px (rail center). Keep piston sliding horizontally.
-      const sliderY = 60;
-      // compute slider x using geometry: (sx - px)^2 + (sliderY - py)^2 = L^2
+      const sliderY = 66;
       const dy = sliderY - py;
       const inside = Math.max(0, L*L - dy*dy);
-      const sx = px + Math.sqrt(inside); // choose the right-side solution
+      const sx = px + Math.sqrt(inside);
 
-      // piston position
-      const pistonX = clamp(sx, 120, 250);
+      const pistonX = clamp(sx, 122, 260);
       piston.style.left = pistonX + "px";
 
-      // connecting rod from pin to piston center
-      const pistonCenterX = pistonX + 32;
+      const pistonCenterX = pistonX + 33;
       const pistonCenterY = sliderY;
       const dx = pistonCenterX - px;
       const len = Math.sqrt(dx*dx + dy*dy);
@@ -985,30 +1290,31 @@
       const rodAngle = Math.atan2(dy, dx) * (180/Math.PI);
       rod.style.transform = `rotate(${rodAngle}deg)`;
 
-      // flywheel rotation
       flywheel.style.transform = `rotate(${angle*180/Math.PI}deg)`;
 
       requestAnimationFrame(mechTick);
     }
     mechTick();
 
-    // ====== interactions ======
-    document.getElementById('btnConfetti').addEventListener('click', ()=>{ burstConfetti(150); addPressure(10); });
+    // ====== shortcuts ======
+    document.addEventListener('keydown', (e)=>{
+      const k = e.key.toLowerCase();
+      if(e.code === 'Space'){ e.preventDefault(); burstConfetti(120); addPressure(10); }
+      if(k === 'b'){ blowCandles(); }
+      if(k === 'l'){ relightCandles(); }
+      if(k === 'f'){ openFortune(); }
+      if(k === 't'){ setTurbo(!turbo); }
+    });
 
+    // click anywhere small pop
     document.addEventListener('click', (e)=>{
       if(e.target.tagName.toLowerCase() === 'button') return;
       popAt(e.clientX, e.clientY, 12);
     });
 
-    document.addEventListener('keydown', (e)=>{
-      if(e.code === 'Space'){ e.preventDefault(); burstConfetti(120); addPressure(10); }
-      if(e.key.toLowerCase() === 'b'){ blowCandles(); }
-      if(e.key.toLowerCase() === 't'){ setTurbo(!turbo); }
-    });
-
     // start party
     burstConfetti(160);
-    setTimeout(()=>{ if(anyFlameOn()) blowCandles(); }, 1100);
+    setFlames(true);
   </script>
 </body>
 </html>
