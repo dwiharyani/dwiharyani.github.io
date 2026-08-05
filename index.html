@@ -1482,7 +1482,7 @@ const CONFIG = {
     // mode: "auto" uses Google Sheets when the URL is filled, otherwise localStorage.
     // You may also force "googleSheets" or "local".
     mode: "auto",
-    googleAppsScriptUrl: "https://script.google.com/macros/s/AKfycbwBiEbeBpZ-YHTQweD8CG6sJd1Qt1VxjgWca_3WyFXOeebxYHRIW7aaKcBKa2v01Lw/exec"
+    googleAppsScriptUrl: "https://script.google.com/macros/s/AKfycbzR8I0ADjZ_LC2AlU_pQ6EVcb52evt3vWqKNOjFi2VgsmqGhUIVB8v8YhL8f51xfqc/exec"
   }
 };
 
@@ -3453,7 +3453,7 @@ let lastWishSubmitAt = 0;
 
 function googleSheetsGuestbookReady(){
   const g = CONFIG.guestbook || {};
-  const url = String(g.googleAppsScriptUrl || "https://script.google.com/macros/s/AKfycbwBiEbeBpZ-YHTQweD8CG6sJd1Qt1VxjgWca_3WyFXOeebxYHRIW7aaKcBKa2v01Lw/exec").trim();
+  const url = String(g.googleAppsScriptUrl || "https://script.google.com/macros/s/AKfycbzR8I0ADjZ_LC2AlU_pQ6EVcb52evt3vWqKNOjFi2VgsmqGhUIVB8v8YhL8f51xfqc/exec").trim();
   return /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec(?:\?.*)?$/.test(url);
 }
 function googleSheetsEndpoint(){
