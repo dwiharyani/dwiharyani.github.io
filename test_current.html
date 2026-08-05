@@ -451,12 +451,11 @@ canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#20314a
 }
 .memory-card{
   aspect-ratio:1/1;border-radius:18px;border:0;background:#fff;position:relative;transform-style:preserve-3d;transition:transform .35s ease;
-  box-shadow:0 10px 22px rgba(54,44,111,.10);
-  min-width:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent
+  box-shadow:0 10px 22px rgba(54,44,111,.10)
 }
 .memory-card .face{
   position:absolute;inset:0;border-radius:18px;display:grid;place-items:center;font-size:46px;font-weight:900;
-  backface-visibility:hidden;line-height:1
+  backface-visibility:hidden
 }
 .memory-card .front{
   background:linear-gradient(145deg,var(--violet),var(--violet2));color:#fff
@@ -557,17 +556,8 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
   .birthday-orbit{width:190px;height:190px;margin-left:-95px;top:30px}
   .avatar-floating-label{display:none}
   .hud{grid-template-columns:1fr 1fr}
-  .spot-wrap{grid-template-columns:1fr}
-  .memory-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-  .memory-card{border-radius:14px}
-  .memory-card .face{border-radius:14px;font-size:clamp(26px,8.5vw,34px)}
+  .spot-wrap,.memory-grid{grid-template-columns:1fr}
   .topbar{align-items:flex-start}
-}
-
-@media(max-width:390px){
-  .memory-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
-  .memory-card{border-radius:12px}
-  .memory-card .face{border-radius:12px;font-size:clamp(22px,8vw,30px)}
 }
 
 
@@ -609,7 +599,7 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
 
 
 
-/* Level 7 — Code Playground (pastel coding-game theme) */
+/* Level 6 — Code Playground (pastel coding-game theme) */
 .code-playground{
   --code-ink:#272b46;
   --code-muted:#73788f;
@@ -771,557 +761,6 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
 @media(max-width:900px){.celebration-grid{grid-template-columns:1fr}.gacha-machine{height:410px}.wish-wall{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.celebration-card{padding:16px;border-radius:22px}.wish-form-row{grid-template-columns:1fr}.wish-wall{grid-template-columns:1fr}.gacha-machine{width:min(300px,100%);height:400px}.final-actions{align-items:stretch}.final-actions .btn{width:100%}}
 
-
-/* Tablet and mobile fix for Code Playground */
-.code-playground,
-.code-main,
-.code-editor,
-.code-board-card,
-.code-board-shell,
-.code-main > section{
-  min-width:0;
-  max-width:100%;
-}
-.code-playground{
-  width:100%;
-  overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;
-}
-.code-command-btn,
-.code-run,
-.code-hint,
-.code-reset,
-.code-clear,
-.code-next{
-  touch-action:manipulation;
-  -webkit-tap-highlight-color:transparent;
-}
-
-@media(max-width:1100px){
-  .code-main{
-    grid-template-columns:minmax(0,1fr) !important;
-    width:100%;
-  }
-
-  /* Show the game board and Dhai first on tablet/mobile. */
-  .code-main > section:nth-child(2){
-    order:-1;
-    width:100%;
-  }
-
-  .code-editor{
-    width:100%;
-  }
-
-  .code-board-card{
-    width:min(100%,650px);
-    margin:0 auto;
-  }
-
-  .code-board-shell{
-    width:100%;
-    max-width:590px;
-    margin:0 auto;
-  }
-
-  .code-board{
-    width:100%;
-    min-width:0;
-    aspect-ratio:1 / 1;
-  }
-
-  .code-workspace{
-    min-height:230px;
-  }
-}
-
-@media(max-width:620px){
-  .stage.card{
-    padding:12px;
-  }
-
-  .code-gamebar{
-    width:100%;
-  }
-
-  .code-game-stats{
-    width:100%;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-  }
-
-  .code-progress-pill{
-    grid-column:1 / -1;
-    width:100%;
-    min-width:0;
-  }
-
-  .code-stat-pill{
-    justify-content:center;
-    min-width:0;
-  }
-
-  .code-main{
-    padding:0 8px 14px;
-    gap:14px;
-  }
-
-  .code-board-card{
-    padding:9px;
-    border-radius:20px;
-  }
-
-  .code-board-shell{
-    padding:6px;
-    border-radius:21px;
-  }
-
-  .code-board{
-    gap:5px;
-  }
-
-  .code-cell{
-    min-width:0;
-    min-height:0;
-    border-radius:22%;
-  }
-
-  .code-character{
-    inset:4%;
-    width:92%;
-    height:92%;
-  }
-
-  .code-treasure{
-    font-size:clamp(30px,12vw,46px);
-  }
-
-  .code-rock{
-    font-size:clamp(20px,8vw,30px);
-  }
-
-  .code-guide{
-    grid-template-columns:58px minmax(0,1fr);
-    gap:9px;
-  }
-
-  .code-guide img{
-    width:56px;
-    height:62px;
-  }
-
-  .code-toolbar{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:8px;
-  }
-
-  .code-command-btn{
-    width:100%;
-    white-space:normal;
-  }
-
-  .code-editor-actions{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:8px;
-  }
-
-  .code-editor-actions button{
-    width:100%;
-    margin:0;
-  }
-
-  .code-clear{
-    grid-column:1 / -1;
-  }
-
-  .code-workspace{
-    min-height:190px;
-  }
-}
-
-/* Fallback for older Safari versions without aspect-ratio support. */
-@supports not (aspect-ratio:1 / 1){
-  @media(max-width:1100px){
-    .code-board{
-      height:560px;
-    }
-  }
-
-  @media(max-width:700px){
-    .code-board{
-      height:calc(100vw - 86px);
-      max-height:520px;
-      min-height:270px;
-    }
-  }
-}
-
-
-/* Mobile fix for Level 1 and Level 2 adventure gameplay */
-.mobile-adventure-help{display:none}
-
-@media(max-width:980px){
-  .canvas-shell{
-    width:100%;
-    border-radius:22px;
-  }
-
-  #adventureCanvas{
-    width:100%;
-    max-width:100%;
-  }
-
-  .canvas-badge{
-    top:9px;
-    max-width:calc(100% - 22px);
-    padding:7px 12px;
-    font-size:12px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
-}
-
-@media(max-width:700px){
-  .shell{
-    gap:9px;
-  }
-
-  .hud{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:6px;
-    padding:7px;
-    border-radius:17px;
-  }
-
-  .hud-box{
-    min-width:0;
-    padding:7px 5px;
-    border-radius:12px;
-  }
-
-  .hud-box small{
-    font-size:8px;
-    letter-spacing:.04em;
-  }
-
-  .hud-box strong{
-    margin-top:2px;
-    font-size:14px;
-    overflow-wrap:anywhere;
-  }
-
-  .hud-box:nth-child(1),
-  .hud-box:nth-child(3){
-    display:none;
-  }
-
-  .hud-box:nth-child(7){
-    grid-column:1 / -1;
-    padding:7px 9px;
-  }
-
-  .hud-box:nth-child(7) strong{
-    font-size:12px;
-    line-height:1.25;
-  }
-
-  .level-title{
-    padding:10px 12px;
-    border-radius:15px;
-    font-size:13px;
-  }
-
-  .stage.card{
-    padding:10px;
-    border-radius:20px;
-  }
-
-  .stage-grid{
-    gap:10px;
-  }
-
-  .story-banner{
-    grid-template-columns:44px minmax(0,1fr);
-    gap:9px;
-    padding:10px;
-    border-radius:15px;
-  }
-
-  .story-icon{
-    width:42px;
-    height:42px;
-    border-radius:13px;
-    font-size:22px;
-  }
-
-  .story-banner small{
-    font-size:8px;
-    line-height:1.25;
-  }
-
-  .story-banner h3{
-    margin:2px 0 3px;
-    font-size:14px;
-    line-height:1.2;
-  }
-
-  .story-banner p{
-    font-size:11px;
-    line-height:1.4;
-  }
-
-  .canvas-shell{
-    border-radius:18px;
-    box-shadow:0 14px 32px rgba(41,34,88,.15);
-  }
-
-  .canvas-badge{
-    top:7px;
-    padding:6px 9px;
-    font-size:10px;
-  }
-
-  .controls{
-    grid-template-columns:minmax(150px,1fr) 82px;
-    grid-template-areas:
-      "dpad action"
-      "help help";
-    gap:9px;
-    align-items:center;
-    padding:2px 1px 0;
-  }
-
-  .dpad{
-    grid-area:dpad;
-    justify-self:center;
-    width:150px;
-    height:150px;
-  }
-
-  .ctrl{
-    width:52px;
-    height:52px;
-    border-radius:16px;
-    font-size:21px;
-    touch-action:none;
-    -webkit-tap-highlight-color:transparent;
-  }
-
-  .ctrl.up{left:49px;top:0}
-  .ctrl.down{left:49px;bottom:0}
-  .ctrl.left{left:0;top:49px}
-  .ctrl.right{right:0;top:49px}
-
-  .action-btn{
-    grid-area:action;
-    justify-self:center;
-    width:78px;
-    height:78px;
-    font-size:24px;
-    touch-action:manipulation;
-    -webkit-tap-highlight-color:transparent;
-  }
-
-  .help-box{
-    grid-area:help;
-    padding:9px 11px;
-    border-radius:14px;
-    font-size:11px;
-    line-height:1.4;
-    text-align:center;
-  }
-
-  .desktop-adventure-help{display:none}
-  .mobile-adventure-help{display:inline}
-}
-
-@media(max-width:390px){
-  .app{
-    width:calc(100% - 8px);
-  }
-
-  .controls{
-    grid-template-columns:minmax(142px,1fr) 72px;
-  }
-
-  .dpad{
-    width:142px;
-    height:142px;
-  }
-
-  .ctrl{
-    width:49px;
-    height:49px;
-  }
-
-  .ctrl.up{left:46.5px}
-  .ctrl.down{left:46.5px}
-  .ctrl.left{top:46.5px}
-  .ctrl.right{top:46.5px}
-
-  .action-btn{
-    width:70px;
-    height:70px;
-    font-size:22px;
-  }
-}
-
-
-/* Level 1 — TPA visual logic image quiz */
-.image-logic-shell{display:grid;gap:18px}
-.logic-meta{text-align:center}
-.logic-meta h2{margin:0 0 8px;font-size:clamp(1.5rem,3vw,2rem)}
-.logic-meta p{margin:0;color:#6e6f86;line-height:1.6}
-.logic-prompt{
-  padding:16px 18px;border-radius:18px;background:linear-gradient(145deg,#f4f0ff,#fff);
-  border:1px solid #e8e1fb;color:#4e4d67;font-weight:800;line-height:1.6
-}
-.logic-stem-wrap,.logic-options-wrap{
-  display:grid;gap:14px;
-}
-.logic-stem-card{
-  padding:18px;border-radius:22px;background:#fff;border:1px solid #ebe6f8;
-  box-shadow:0 12px 28px rgba(66,53,127,.08)
-}
-.logic-board{
-  display:grid;
-  gap:8px;
-  margin:0 auto;
-  width:fit-content;
-  background:#fff;
-  border:2px solid #d9d3ec;
-  border-radius:18px;
-  padding:12px;
-}
-.logic-board.sequence-board{
-  border-radius:15px;
-  padding:8px;
-}
-.logic-cell{
-  width:70px;height:70px;border-radius:14px;background:#fbf9ff;
-  border:1px solid #ece8f7;display:grid;place-items:center;
-}
-.logic-cell.compact{width:52px;height:52px;border-radius:11px}
-.logic-symbol{
-  display:inline-grid;place-items:center;
-  font-size:40px;line-height:1;
-  filter:grayscale(1) saturate(.5);
-  transform-origin:center center;
-}
-.logic-cell.compact .logic-symbol{font-size:29px}
-.logic-sequence{
-  display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
-}
-.logic-separator{
-  font-size:26px;font-weight:900;color:#948cc5
-}
-.logic-question-mark{
-  width:72px;height:72px;border-radius:18px;display:grid;place-items:center;
-  background:#f6f2ff;border:2px dashed #cfc6f2;color:#7f73c4;font-size:32px;font-weight:950
-}
-.logic-options-grid{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;
-}
-.logic-option{
-  border:2px solid #ece7f8;background:#fff;border-radius:20px;padding:14px 12px;
-  text-align:center;transition:.18s ease;box-shadow:0 10px 24px rgba(67,55,126,.06)
-}
-.logic-option:hover{transform:translateY(-2px);border-color:#cfc5f9;background:#faf8ff}
-.logic-option.correct{border-color:#72d6ad;background:#eefcf6}
-.logic-option.wrong{border-color:#ff97ad;background:#fff1f4}
-.logic-option-label{
-  display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;
-  margin:0 auto 10px;background:#f2efff;color:#6c5ce7;font-weight:950
-}
-.logic-feedback{min-height:28px;text-align:center;font-weight:900}
-.logic-next-row{display:flex;justify-content:center}
-.logic-next-btn{display:none}
-.logic-next-btn.show{display:inline-flex}
-@media(max-width:700px){
-  .logic-board{padding:10px;gap:6px}
-  .logic-cell{width:58px;height:58px;border-radius:12px}
-  .logic-symbol{font-size:34px}
-  .logic-options-grid{grid-template-columns:1fr}
-  .logic-sequence{gap:8px}
-  .logic-separator{font-size:20px}
-  .logic-question-mark{width:60px;height:60px;font-size:28px}
-}
-
-
-/* Game completion timer + fastest-wish leaderboard */
-.finish-time-card{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  margin:8px auto 20px;
-  padding:12px 18px;
-  border-radius:999px;
-  background:linear-gradient(145deg,#eefcf7,#f5f1ff);
-  border:1px solid #d9eee7;
-  color:#4b4564;
-  font-weight:950;
-  box-shadow:0 9px 22px rgba(72,59,120,.08);
-}
-.finish-time-card strong{color:#6c5ce7;font-size:1.15rem}
-.wish-finish-time{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:6px 9px;
-  border-radius:999px;
-  background:#fff8df;
-  color:#8b6420;
-  font-size:12px;
-  font-weight:950;
-}
-.wish-rank{
-  position:absolute;
-  right:10px;
-  top:10px;
-  min-width:34px;
-  height:28px;
-  padding:0 8px;
-  border-radius:999px;
-  display:grid;
-  place-items:center;
-  background:rgba(255,255,255,.72);
-  color:#5c5061;
-  font-size:12px;
-  font-weight:950;
-  box-shadow:0 4px 10px rgba(72,55,72,.08);
-}
-.wish-time-line{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-top:8px;
-  font-size:11px;
-  font-weight:900;
-  color:#6e6071;
-}
-.wish-time-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  padding:5px 8px;
-  border-radius:999px;
-  background:rgba(255,255,255,.57);
-}
-.wish-note.fastest{
-  outline:3px solid rgba(255,190,49,.72);
-  box-shadow:0 12px 25px rgba(255,190,49,.20);
-}
-@media(min-width:981px){
-  .hud{
-    grid-template-columns:145px repeat(6,minmax(0,1fr));
-  }
-}
-
 </style>
 </head>
 <body>
@@ -1346,8 +785,8 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
       <h1><span>Dhai Adventure</span><br>Celebrating Dhai's 24th Birthday</h1>
       <p>
         On her 24th birthday, Dhai wakes inside a dream world with a broken Inner Compass.
-        Its seven missing pieces represent Visual Logic, Courage, Trust, Curiosity, Focus, Memory, and Logic.
-        Help Dhai recover every piece and discover that the strength she is searching for has always been within her.
+        Its six missing pieces represent Courage, Trust, Curiosity, Focus, Memory, and Logic.
+        Help Dhai recover every piece and discover that the person she is searching for has always been within her.
       </p>
      
       <div style="display:flex;gap:12px;flex-wrap:wrap">
@@ -1357,13 +796,12 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
         <span class="role-chip"><img src="assets/avatar_thumbs.png" alt="">Dhai · Main Character</span>
       </div>
       <div class="level-pills">
-        <span class="pill">1. Visual Logic — TPA Puzzle</span>
-        <span class="pill">2. Flower Garden — Courage</span>
-        <span class="pill">3. Arabian Desert — Trust</span>
-        <span class="pill">4. Riddle Room — Curiosity</span>
-        <span class="pill">5. Spot the Difference — Focus</span>
-        <span class="pill">6. Memory Match — Memory</span>
-        <span class="pill">7. Code Playground — Logic</span>
+        <span class="pill">1. Flower Garden — Courage</span>
+        <span class="pill">2. Arabian Desert — Trust</span>
+        <span class="pill">3. Riddle Room — Curiosity</span>
+        <span class="pill">4. Spot the Difference — Focus</span>
+        <span class="pill">5. Memory Match — Memory</span>
+        <span class="pill">6. Code Playground — Logic</span>
       </div>
     </div>
     <div class="hero-visual-column">
@@ -1383,15 +821,14 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
         <small>Main Character</small>
         <strong><img src="assets/avatar_idle.png" alt="avatar"></strong>
       </div>
-      <div class="hud-box"><small>Level</small><strong id="hudLevel">1 / 7</strong></div>
+      <div class="hud-box"><small>Level</small><strong id="hudLevel">1 / 6</strong></div>
       <div class="hud-box"><small>Mode</small><strong id="hudMode">Adventure</strong></div>
       <div class="hud-box"><small>Lives / Progress</small><strong id="hudLives">3</strong></div>
       <div class="hud-box"><small>Score</small><strong id="hudScore">0</strong></div>
-      <div class="hud-box"><small>Time</small><strong id="hudTimer">00:00</strong></div>
       <div class="hud-box"><small>Target</small><strong id="hudTarget">Collect all stars</strong></div>
     </div>
 
-    <div class="level-title" id="levelTitle">Level 1 — Visual Logic Challenge</div>
+    <div class="level-title" id="levelTitle">Level 1 — Flower Garden Quest</div>
 
     <section class="stage card">
       <div class="stage-grid" id="stageContainer"></div>
@@ -1401,10 +838,9 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
   <section class="card end-screen hidden" id="endScreen">
     <h2>Happy 24th Birthday, Dhai!</h2>
     <p class="final-celebration-intro">
-      You recovered all seven pieces of the Inner Compass: Visual Logic, Courage, Trust, Curiosity, Focus, Memory, and Logic.
+      You recovered all six pieces of the Inner Compass: Courage, Trust, Curiosity, Focus, Memory, and Logic.
       One final celebration is now unlocked: receive a positive capsule from Dhai and leave a birthday note on her wish wall.
     </p>
-    <div class="finish-time-card">⏱️ Your completion time: <strong id="finalCompletionTime">00:00</strong></div>
     <div class="reward-panel">
       <img class="reward-art" src="assets/avatar_celebrate.png" alt="Dhai celebrating">
       <h3>Your Final Birthday Gift Is Unlocked</h3>
@@ -1446,13 +882,12 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
         <p>Your note will appear on the shared Google Sheets birthday wall after the Apps Script URL is connected. If the connection is unavailable, it is kept safely on this device.</p>
         <form class="wish-form" id="wishForm">
           <div class="wish-form-row">
-            <input class="wish-input" id="wishName" maxlength="40" placeholder="Your name (optional)" autocomplete="name" enterkeyhint="next">
-            <input class="wish-input" id="wishTitle" maxlength="55" placeholder="Short title, e.g. Happy Birthday!" enterkeyhint="next">
+            <input class="wish-input" id="wishName" maxlength="40" placeholder="Your name (optional)" autocomplete="name">
+            <input class="wish-input" id="wishTitle" maxlength="55" placeholder="Short title, e.g. Happy Birthday!">
           </div>
-          <textarea class="wish-textarea" id="messageText" maxlength="280" required placeholder="Write your birthday message for Dhai…" enterkeyhint="done"></textarea>
+          <textarea class="wish-textarea" id="messageText" maxlength="280" required placeholder="Write your birthday message for Dhai…"></textarea>
           <div class="wish-meta">
             <span class="storage-status" id="storageStatus">💾 Checking storage…</span>
-            <span class="wish-finish-time">🏁 Finish time: <strong id="wishFinishTime">00:00</strong></span>
             <span id="wishCharCount">0 / 280</span>
           </div>
           <div class="wish-submit-row">
@@ -1462,7 +897,7 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
             <button class="wish-secondary" type="button" id="exportWishesBtn">Export notes</button>
           </div>
         </form>
-        <div class="wish-wall-title"><h4>Fastest Finishers & Birthday Wishes</h4><span class="wish-count" id="wishCount">0 notes</span></div>
+        <div class="wish-wall-title"><h4>Birthday Wish Wall</h4><span class="wish-count" id="wishCount">0 notes</span></div>
         <div class="wish-wall" id="wishWall"><div class="wish-empty">Be the first person to leave Dhai a birthday note.</div></div>
       </article>
     </div>
@@ -1511,108 +946,11 @@ const ASSET_PATHS = {
 };
 const IMAGES = {};
 
-
-const VISUAL_LOGIC_QUESTIONS = [
-  {
-    prompt:"Observe the figure carefully. If the whole card is rotated 90° clockwise, which option is correct?",
-    stem:{rows:3,cols:1,items:[
-      {r:0,c:0,icon:"🐕",rot:0},
-      {r:1,c:0,icon:"🐕",rot:90},
-      {r:2,c:0,icon:"🐕",rot:180}
-    ]},
-    options:[
-      {rows:1,cols:3,items:[
-        {r:0,c:0,icon:"🐕",rot:90},
-        {r:0,c:1,icon:"🐕",rot:180},
-        {r:0,c:2,icon:"🐕",rot:270}
-      ]},
-      {rows:1,cols:3,items:[
-        {r:0,c:0,icon:"🐕",rot:270},
-        {r:0,c:1,icon:"🐕",rot:180},
-        {r:0,c:2,icon:"🐕",rot:90}
-      ]},
-      {rows:3,cols:1,items:[
-        {r:0,c:0,icon:"🐕",rot:270},
-        {r:1,c:0,icon:"🐕",rot:180},
-        {r:2,c:0,icon:"🐕",rot:90}
-      ]},
-      {rows:1,cols:3,items:[
-        {r:0,c:0,icon:"🐕",rot:0},
-        {r:0,c:1,icon:"🐕",rot:90},
-        {r:0,c:2,icon:"🐕",rot:180}
-      ]}
-    ],
-    answer:1,
-    explain:"A clockwise rotation turns the vertical stack into a horizontal row, and each dog rotates another 90°."
-  },
-  {
-    prompt:"The next challenge is harder. If the whole card is rotated 180°, which option shows the correct result?",
-    stem:{rows:2,cols:2,items:[
-      {r:0,c:0,icon:"🦊",rot:0},
-      {r:1,c:0,icon:"🦊",rot:90},
-      {r:1,c:1,icon:"🦊",rot:180}
-    ]},
-    options:[
-      {rows:2,cols:2,items:[
-        {r:0,c:0,icon:"🦊",rot:180},
-        {r:1,c:0,icon:"🦊",rot:270},
-        {r:1,c:1,icon:"🦊",rot:0}
-      ]},
-      {rows:2,cols:2,items:[
-        {r:0,c:0,icon:"🦊",rot:0},
-        {r:0,c:1,icon:"🦊",rot:270},
-        {r:1,c:1,icon:"🦊",rot:180}
-      ]},
-      {rows:2,cols:2,items:[
-        {r:0,c:0,icon:"🦊",rot:0},
-        {r:0,c:1,icon:"🦊",rot:90},
-        {r:1,c:1,icon:"🦊",rot:180}
-      ]},
-      {rows:2,cols:2,items:[
-        {r:0,c:1,icon:"🦊",rot:0},
-        {r:1,c:0,icon:"🦊",rot:270},
-        {r:1,c:1,icon:"🦊",rot:180}
-      ]}
-    ],
-    answer:1,
-    explain:"A 180° turn swaps the positions diagonally, and every fox rotates another 180°."
-  },
-  {
-    prompt:"Now find the missing fourth figure. In each step, the bird moves clockwise to the next corner and rotates 90° clockwise. Which option should come next?",
-    sequence:[
-      {rows:2,cols:2,items:[{r:0,c:0,icon:"🐦",rot:0}]},
-      {rows:2,cols:2,items:[{r:0,c:1,icon:"🐦",rot:90}]},
-      {rows:2,cols:2,items:[{r:1,c:1,icon:"🐦",rot:180}]}
-    ],
-    options:[
-      {rows:2,cols:2,items:[{r:1,c:0,icon:"🐦",rot:270}]},
-      {rows:2,cols:2,items:[{r:1,c:0,icon:"🐦",rot:180}]},
-      {rows:2,cols:2,items:[{r:0,c:0,icon:"🐦",rot:270}]},
-      {rows:2,cols:2,items:[{r:0,c:1,icon:"🐦",rot:0}]}
-    ],
-    answer:0,
-    explain:"The bird continues around the square: top-left → top-right → bottom-right → bottom-left, while also turning 90° each time."
-  }
-];
-
-
 const LEVELS = [
-  {
-    type:"visuallogic",
-    modeName:"Quiz",
-    title:"Level 1 — Visual Logic Challenge",
-    storyIcon:"🧩",
-    shard:"Visual Logic",
-    story:"A TPA-style visual reasoning test guards the first compass piece. Study each pattern carefully, then use rotation and positional logic to find the right answer.",
-    target:"Solve all 3 visual logic questions",
-    reward:{emoji:"🧩",title:"Visual Logic Piece Recovered",text:"Dhai sharpens her visual reasoning by spotting patterns, rotations, and hidden structure."},
-    questions: VISUAL_LOGIC_QUESTIONS
-  },
-
   {
     type:"adventure",
     modeName:"Adventure",
-    title:"Level 2 — Flower Garden Quest",
+    title:"Level 1 — Flower Garden Quest",
     storyIcon:"🌸",
     shard:"Courage",
     story:"The first compass piece is hidden in a garden that grows only for those willing to take the first step. Help Dhai move forward even when the path feels uncertain.",
@@ -1638,7 +976,7 @@ const LEVELS = [
   {
     type:"adventure",
     modeName:"Adventure",
-    title:"Level 3 — Arabian Desert Quest",
+    title:"Level 2 — Arabian Desert Quest",
     storyIcon:"🐪",
     shard:"Trust",
     story:"The desert cannot be crossed alone. Dhai must befriend Noor the camel, trust her companion, and ride together toward the final gate.",
@@ -1665,7 +1003,7 @@ const LEVELS = [
   {
     type:"riddle",
     modeName:"Riddle",
-    title:"Level 4 — Birthday Riddle Room",
+    title:"Level 3 — Birthday Riddle Room",
     storyIcon:"💡",
     shard:"Curiosity",
     story:"A locked room responds only to honest curiosity. Dhai must type the hidden words instead of choosing from easy answers.",
@@ -1680,7 +1018,7 @@ const LEVELS = [
   {
     type:"spot",
     modeName:"Puzzle",
-    title:"Level 5 — Spot the Difference",
+    title:"Level 4 — Spot the Difference",
     storyIcon:"🔎",
     shard:"Focus",
     story:"Two birthday rooms look almost identical. Dhai must slow down and notice the five precise details that do not match.",
@@ -1697,7 +1035,7 @@ const LEVELS = [
   {
     type:"memory",
     modeName:"Puzzle",
-    title:"Level 6 — Birthday Memory Match",
+    title:"Level 5 — Birthday Memory Match",
     storyIcon:"💜",
     shard:"Memory",
     story:"This compass piece is made from moments worth remembering. Match the birthday symbols and help Dhai reconnect with the memories that shaped her.",
@@ -1707,7 +1045,7 @@ const LEVELS = [
   {
     type:"coding",
     modeName:"Coding",
-    title:"Level 7 — Code Playground",
+    title:"Level 6 — Code Playground",
     storyIcon:"💻",
     shard:"Logic",
     story:"The final compass piece is protected by a tiny programming world. Stack movement blocks, run the code, and guide Dhai through three logic paths to the treasure chest.",
@@ -1728,12 +1066,7 @@ let soundOn = true;
 
 const state = {
   currentLevel: 0,
-  score: 0,
-  timerRunning: false,
-  timerStartedAt: 0,
-  timerElapsedMs: 0,
-  timerCompletedMs: null,
-  timerInterval: null
+  score: 0
 };
 
 const adventureState = {
@@ -1769,121 +1102,22 @@ function preloadImages(){
   })));
 }
 
-
-function getCurrentTimerMs(){
-  const livePart = state.timerRunning
-    ? Math.max(0, performance.now() - state.timerStartedAt)
-    : 0;
-  return Math.max(0, Math.round(state.timerElapsedMs + livePart));
-}
-
-function formatGameTime(ms){
-  const safeMs = Math.max(0, Number(ms) || 0);
-  const totalSeconds = Math.floor(safeMs / 1000);
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-
-  if(hours > 0){
-    return `${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
-  }
-  return `${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
-}
-
-function updateTimerDisplay(){
-  const value = state.timerCompletedMs != null
-    ? state.timerCompletedMs
-    : getCurrentTimerMs();
-  const formatted = formatGameTime(value);
-
-  const hudTimer = $("#hudTimer");
-  if(hudTimer) hudTimer.textContent = formatted;
-
-  const finalTimer = $("#finalCompletionTime");
-  if(finalTimer) finalTimer.textContent = formatted;
-
-  const wishTimer = $("#wishFinishTime");
-  if(wishTimer) wishTimer.textContent = formatted;
-}
-
-function startGameTimer(){
-  if(state.timerCompletedMs != null || state.timerRunning) return;
-  state.timerRunning = true;
-  state.timerStartedAt = performance.now();
-
-  clearInterval(state.timerInterval);
-  state.timerInterval = setInterval(()=>{
-    updateTimerDisplay();
-  }, 250);
-
-  updateTimerDisplay();
-  saveProgress();
-}
-
-function pauseGameTimer(){
-  if(state.timerRunning){
-    state.timerElapsedMs = getCurrentTimerMs();
-    state.timerRunning = false;
-    state.timerStartedAt = 0;
-  }
-  clearInterval(state.timerInterval);
-  state.timerInterval = null;
-  updateTimerDisplay();
-  saveProgress();
-}
-
-function completeGameTimer(){
-  if(state.timerCompletedMs != null) return state.timerCompletedMs;
-  if(state.timerRunning){
-    state.timerElapsedMs = getCurrentTimerMs();
-  }
-  state.timerRunning = false;
-  state.timerStartedAt = 0;
-  clearInterval(state.timerInterval);
-  state.timerInterval = null;
-  state.timerCompletedMs = Math.max(1, Math.round(state.timerElapsedMs));
-  updateTimerDisplay();
-  saveProgress();
-  return state.timerCompletedMs;
-}
-
-function resetGameTimer(){
-  state.timerRunning = false;
-  state.timerStartedAt = 0;
-  state.timerElapsedMs = 0;
-  state.timerCompletedMs = null;
-  clearInterval(state.timerInterval);
-  state.timerInterval = null;
-  updateTimerDisplay();
-}
-
-
 function saveProgress(){
   try{
-    localStorage.setItem("dhai_adventure_24_progress_v18", JSON.stringify({
-      level:state.currentLevel,
-      score:state.score,
-      timerElapsedMs:getCurrentTimerMs(),
-      timerCompletedMs:state.timerCompletedMs
-    }));
+    localStorage.setItem("dhai_adventure_24_progress", JSON.stringify({level:state.currentLevel, score:state.score}));
   }catch(e){}
 }
 function loadProgress(){
   try{
-    const saved = JSON.parse(localStorage.getItem("dhai_adventure_24_progress_v18"));
+    const saved = JSON.parse(localStorage.getItem("dhai_adventure_24_progress"));
     if(saved){
       state.currentLevel = Math.max(0, Math.min(LEVELS.length-1, Number(saved.level)||0));
       state.score = Number(saved.score)||0;
-      state.timerElapsedMs = Math.max(0, Number(saved.timerElapsedMs)||0);
-      state.timerCompletedMs = saved.timerCompletedMs == null
-        ? null
-        : Math.max(1, Number(saved.timerCompletedMs)||1);
-      updateTimerDisplay();
     }
   }catch(e){}
 }
 function clearProgress(){
-  try{ localStorage.removeItem("dhai_adventure_24_progress_v18"); }catch(e){}
+  try{ localStorage.removeItem("dhai_adventure_24_progress"); }catch(e){}
 }
 
 function toast(msg){
@@ -1963,8 +1197,8 @@ function startGame(){
       <div class="center">
         <img class="reward-art" src="${IMAGES.avatarSurprise?.src || ASSET_PATHS.avatarSurprise}" alt="Dhai">
         <h2>The Broken Inner Compass</h2>
-        <p>On the morning of her 24th birthday, Dhai enters a dream where her Inner Compass has broken into seven pieces. Each piece holds a part of who she already is.</p>
-        <p>Recover Visual Logic, Courage, Trust, Curiosity, Focus, Memory, and Logic — and help Dhai finally recognise herself.</p>
+        <p>On the morning of her 24th birthday, Dhai enters a dream where her Inner Compass has broken into six pieces. Each piece holds a part of who she already is.</p>
+        <p>Recover Courage, Trust, Curiosity, Focus, Memory, and Logic — and help Dhai finally recognise herself.</p>
         <button class="btn btn-primary" id="beginStoryBtn">Begin the journey →</button>
       </div>
     `;
@@ -1972,19 +1206,14 @@ function startGame(){
     $("#beginStoryBtn").onclick = ()=>{
       sessionStorage.setItem("dhai_story_intro_seen","1");
       modalBackdrop.classList.add("hidden");
-      startGameTimer();
     };
-  }else{
-    startGameTimer();
   }
 }
 
 function restartAll(){
-  clearCodeBoardResizeHandler();
   clearProgress();
   state.currentLevel = 0;
   state.score = 0;
-  resetGameTimer();
   stopAdventure();
   gameShell.classList.add("hidden");
   endScreen.classList.add("hidden");
@@ -1994,7 +1223,6 @@ function restartAll(){
 
 function renderLevel(){
   stopAdventure();
-  clearCodeBoardResizeHandler();
   const level = LEVELS[state.currentLevel];
   saveProgress();
   levelTitle.textContent = level.title;
@@ -2008,7 +1236,6 @@ function renderLevel(){
       </div>
     </div>
   `;
-  if(level.type === "visuallogic") renderVisualLogicLevel(level);
   if(level.type === "adventure") renderAdventure(level);
   if(level.type === "riddle") renderRiddleLevel(level);
   if(level.type === "spot") renderSpotLevel(level);
@@ -2039,8 +1266,6 @@ function showRewardAndNext(level){
 }
 
 function finishGame(){
-  clearCodeBoardResizeHandler();
-  completeGameTimer();
   gameShell.classList.add("hidden");
   endScreen.classList.remove("hidden");
   $("#giftCode").textContent = CONFIG.finalGiftCode;
@@ -2079,14 +1304,9 @@ function renderAdventure(level){
         <button class="ctrl down" data-key="ArrowDown">▼</button>
       </div>
       <div class="help-box">
-        <span class="desktop-adventure-help">
-          Use arrow keys or WASD. Collect every star, then enter the glowing gate.
-          In the desert, approach Noor and press <strong>E</strong>, <strong>Space</strong>, or the camel button to ride.
-          <br><strong>Tip:</strong> The key is optional and gives bonus points.
-        </span>
-        <span class="mobile-adventure-help">
-          Collect all stars and enter the glowing gate. In the desert, move near Noor and tap the camel button.
-        </span>
+        Use arrow keys or WASD. Collect every star, then enter the glowing gate.
+        In the desert, approach Noor and press <strong>E</strong>, <strong>Space</strong>, or the camel button to ride.
+        <br><strong>Tip:</strong> The key is optional and gives bonus points.
       </div>
       <button class="action-btn" id="actionBtn" title="Interact or check gate">E</button>
     </div>
@@ -2108,43 +1328,9 @@ function renderAdventure(level){
   adventureState.camel = level.requiresCamel ? {x:1120,y:700,vx:46,dir:1,step:0,baseX:1120,range:155} : null;
   adventureState.running = true;
 
-  function syncAdventureCanvasSize(){
-    const rect = adventureState.canvas.getBoundingClientRect();
-    const cssWidth = Math.max(280, Math.round(rect.width || adventureState.canvas.parentElement.clientWidth || 320));
-
-    let heightRatio = 9 / 16;
-    if(window.innerWidth <= 520) heightRatio = 0.98;
-    else if(window.innerWidth <= 700) heightRatio = 0.88;
-    else if(window.innerWidth <= 980) heightRatio = 0.72;
-
-    const cssHeight = Math.max(240, Math.round(cssWidth * heightRatio));
-
-    adventureState.canvas.style.width = "100%";
-    adventureState.canvas.style.height = `${cssHeight}px`;
-    adventureState.canvas.style.aspectRatio = "auto";
-
-    if(adventureState.canvas.width !== cssWidth || adventureState.canvas.height !== cssHeight){
-      adventureState.canvas.width = cssWidth;
-      adventureState.canvas.height = cssHeight;
-
-      adventureState.camera.x = Math.max(
-        0,
-        Math.min(level.world.w - cssWidth, adventureState.player.x - cssWidth / 2)
-      );
-      adventureState.camera.y = Math.max(
-        0,
-        Math.min(level.world.h - cssHeight, adventureState.player.y - cssHeight / 2)
-      );
-    }
-  }
-
-  syncAdventureCanvasSize();
-  clearAdventureResizeHandler();
-  activeAdventureResizeHandler = ()=>{
-    window.requestAnimationFrame(syncAdventureCanvasSize);
-  };
-  window.addEventListener("resize", activeAdventureResizeHandler, {passive:true});
-  window.addEventListener("orientationchange", activeAdventureResizeHandler, {passive:true});
+  const rect = adventureState.canvas.getBoundingClientRect();
+  adventureState.canvas.width = Math.max(320, Math.round(rect.width));
+  adventureState.canvas.height = Math.round(adventureState.canvas.width * 9/16);
 
   wrap.querySelectorAll(".ctrl").forEach(btn=>{
     const k = btn.dataset.key;
@@ -2169,7 +1355,6 @@ function renderAdventure(level){
 function stopAdventure(){
   adventureState.running = false;
   cancelAnimationFrame(adventureState.frame);
-  clearAdventureResizeHandler();
 }
 
 function rectCircleHit(rect, p){
@@ -2526,30 +1711,28 @@ function isDrawableImage(img){
 function drawAvatar(ctx, p){
   const img = p.dir === "left" ? IMAGES.avatarWalkLeft : p.dir === "right" ? IMAGES.avatarWalkRight : IMAGES.avatarIdle;
   const bob = p.moving ? Math.sin(p.step) * 3 : 0;
-  const mobileCanvas = adventureState.canvas && adventureState.canvas.width <= 560;
-  const height = mobileCanvas ? 116 : 146;
+  const height = 146;
   const width = isDrawableImage(img) ? height * (img.naturalWidth / img.naturalHeight) : 64;
-  const centerY = p.y - (mobileCanvas ? 47 : 60) + bob;
+  const centerY = p.y - 60 + bob;
 
   ctx.save();
   if(p.invincible > 0 && Math.floor(p.invincible*10)%2===0) ctx.globalAlpha = .35;
 
   // A soft light outline keeps Dhai visible on both bright and dark game backgrounds.
-  const glowRadius = mobileCanvas ? 50 : 62;
-  const glow = ctx.createRadialGradient(p.x, centerY, 10, p.x, centerY, glowRadius);
+  const glow = ctx.createRadialGradient(p.x, centerY, 12, p.x, centerY, 62);
   glow.addColorStop(0,"rgba(255,255,255,.88)");
   glow.addColorStop(.62,"rgba(255,255,255,.32)");
   glow.addColorStop(1,"rgba(255,255,255,0)");
   ctx.fillStyle = glow;
   ctx.beginPath();
-  ctx.arc(p.x, centerY, glowRadius, 0, Math.PI*2);
+  ctx.arc(p.x, centerY, 62, 0, Math.PI*2);
   ctx.fill();
 
   ctx.fillStyle="rgba(0,0,0,.18)";
-  ctx.beginPath(); ctx.ellipse(p.x, p.y+(mobileCanvas ? 26 : 34), mobileCanvas ? 19 : 23, mobileCanvas ? 7 : 9, 0, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(p.x, p.y+34, 23, 9, 0, 0, Math.PI*2); ctx.fill();
 
   if(isDrawableImage(img)){
-    ctx.drawImage(img, p.x - width/2, p.y - height + bob + (mobileCanvas ? 10 : 14), width, height);
+    ctx.drawImage(img, p.x - width/2, p.y - height + bob + 14, width, height);
   }else{
     // Visible fallback so the player is never represented by an empty space.
     ctx.fillStyle="#ff8db3";
@@ -2620,11 +1803,7 @@ function drawMountedCamel(ctx, player, camel){
 }
 
 function drawMiniMap(ctx, level, w, h){
-  const isMobileMap = w < 600;
-  const mw = isMobileMap ? 96 : 150;
-  const mh = isMobileMap ? 56 : 86;
-  const x = w - mw - (isMobileMap ? 7 : 12);
-  const y = isMobileMap ? 40 : 12;
+  const mw = 150, mh = 86, x = w - mw - 12, y = 12;
   ctx.save();
   ctx.fillStyle = "rgba(20,24,50,.84)";
   roundRectPath(ctx, x, y, mw, mh, 12); ctx.fill();
@@ -2752,142 +1931,6 @@ function renderRiddleLevel(level){
 
   renderQuestion();
 }
-
-
-/* Visual logic image level */
-function createLogicBoardElement(definition, compact=false){
-  const board = document.createElement("div");
-  board.className = `logic-board ${compact ? "sequence-board" : ""}`;
-  board.style.gridTemplateColumns = `repeat(${definition.cols}, auto)`;
-
-  for(let r=0;r<definition.rows;r++){
-    for(let c=0;c<definition.cols;c++){
-      const cell = document.createElement("div");
-      cell.className = `logic-cell ${compact ? "compact" : ""}`;
-      const item = (definition.items || []).find(entry=>entry.r===r && entry.c===c);
-      if(item){
-        const symbol = document.createElement("span");
-        symbol.className = "logic-symbol";
-        symbol.textContent = item.icon || "•";
-        const flip = item.flip ? " scaleX(-1)" : "";
-        symbol.style.transform = `rotate(${item.rot || 0}deg)${flip}`;
-        cell.appendChild(symbol);
-      }
-      board.appendChild(cell);
-    }
-  }
-  return board;
-}
-
-function renderVisualLogicLevel(level){
-  const questions = level.questions || [];
-  let questionIndex = 0;
-  let wrongAttempts = 0;
-
-  const wrap = document.createElement("div");
-  wrap.className = "level-card image-logic-shell";
-  stageContainer.appendChild(wrap);
-
-  function updateVisualHUD(){
-    updateHUD("TPA Quiz", `Question ${questionIndex + 1} of ${questions.length}`, `${questionIndex}/${questions.length} solved`);
-    $("#hudTarget").textContent = `Question ${questionIndex + 1}/${questions.length}`;
-    $("#hudScore").textContent = state.score;
-  }
-
-  function renderQuestion(){
-    const question = questions[questionIndex];
-    updateVisualHUD();
-
-    wrap.innerHTML = `
-      <div class="logic-meta">
-        <img src="${IMAGES.avatarSurprise?.src || ASSET_PATHS.avatarSurprise}" class="reward-art" alt="Dhai visual logic guide">
-        <h2>TPA Visual Logic ${questionIndex + 1}</h2>
-        <p>Read the picture carefully before choosing an answer.</p>
-      </div>
-      <div class="logic-prompt">${question.prompt}</div>
-      <div class="logic-stem-wrap" id="logicStemWrap"></div>
-      <div class="logic-options-wrap">
-        <div class="logic-options-grid" id="logicOptionsGrid"></div>
-        <div class="logic-feedback" id="logicFeedback"></div>
-        <div class="logic-next-row"><button class="btn btn-primary logic-next-btn" id="logicNextBtn">Next question →</button></div>
-      </div>
-    `;
-
-    const stemWrap = wrap.querySelector("#logicStemWrap");
-    if(question.sequence){
-      const sequence = document.createElement("div");
-      sequence.className = "logic-sequence";
-      question.sequence.forEach((boardDef, idx)=>{
-        sequence.appendChild(createLogicBoardElement(boardDef, true));
-        if(idx < question.sequence.length - 1){
-          const sep = document.createElement("span");
-          sep.className = "logic-separator";
-          sep.textContent = "→";
-          sequence.appendChild(sep);
-        }
-      });
-      const finalSep = document.createElement("span");
-      finalSep.className = "logic-separator";
-      finalSep.textContent = "→";
-      sequence.appendChild(finalSep);
-      const questionMark = document.createElement("div");
-      questionMark.className = "logic-question-mark";
-      questionMark.textContent = "?";
-      sequence.appendChild(questionMark);
-      stemWrap.appendChild(sequence);
-    }else if(question.stem){
-      const card = document.createElement("div");
-      card.className = "logic-stem-card";
-      card.appendChild(createLogicBoardElement(question.stem));
-      stemWrap.appendChild(card);
-    }
-
-    const grid = wrap.querySelector("#logicOptionsGrid");
-    const feedback = wrap.querySelector("#logicFeedback");
-    const nextBtn = wrap.querySelector("#logicNextBtn");
-
-    question.options.forEach((optionDef, index)=>{
-      const button = document.createElement("button");
-      button.className = "logic-option";
-      button.innerHTML = `<span class="logic-option-label">${String.fromCharCode(65 + index)}</span>`;
-      button.appendChild(createLogicBoardElement(optionDef, true));
-      button.addEventListener("click", ()=>{
-        if(button.classList.contains("correct")) return;
-        if(index === question.answer){
-          button.classList.add("correct");
-          feedback.textContent = `Correct! ${question.explain}`;
-          feedback.className = "logic-feedback ok";
-          state.score += Math.max(55, 95 - wrongAttempts * 10);
-          beep(760, .12);
-          Array.from(grid.children).forEach(choice=>choice.disabled = true);
-          nextBtn.classList.add("show");
-          $("#hudScore").textContent = state.score;
-        }else{
-          wrongAttempts++;
-          button.classList.add("wrong");
-          button.disabled = true;
-          feedback.textContent = "Not quite. Study the transformation carefully and try again.";
-          feedback.className = "logic-feedback bad";
-          beep(190, .10);
-        }
-      });
-      grid.appendChild(button);
-    });
-
-    nextBtn.onclick = ()=>{
-      questionIndex++;
-      wrongAttempts = 0;
-      if(questionIndex >= questions.length){
-        showRewardAndNext(level);
-      }else{
-        renderQuestion();
-      }
-    };
-  }
-
-  renderQuestion();
-}
-
 
 /* Spot difference level */
 function renderSpotLevel(level){
@@ -3120,24 +2163,6 @@ const CODE_COMMAND_META = {
   left:{label:"Move Left", icon:"←", code:"moveLeft()"}
 };
 let codeRunVersion = 0;
-let activeCodeBoardResizeHandler = null;
-let activeAdventureResizeHandler = null;
-
-function clearAdventureResizeHandler(){
-  if(activeAdventureResizeHandler){
-    window.removeEventListener("resize", activeAdventureResizeHandler);
-    window.removeEventListener("orientationchange", activeAdventureResizeHandler);
-    activeAdventureResizeHandler = null;
-  }
-}
-
-function clearCodeBoardResizeHandler(){
-  if(activeCodeBoardResizeHandler){
-    window.removeEventListener("resize", activeCodeBoardResizeHandler);
-    window.removeEventListener("orientationchange", activeCodeBoardResizeHandler);
-    activeCodeBoardResizeHandler = null;
-  }
-}
 
 function renderCodingLevel(level){
   codeRunVersion++;
@@ -3160,8 +2185,8 @@ function renderCodingLevel(level){
           <div class="code-progress-copy"><span id="codeLevelBadge">Puzzle 1: Logic Rookie</span><span id="codeXp">0/${CODE_MISSIONS.length}</span></div>
           <div class="code-progress-track"><div class="code-progress-fill" id="codeProgressFill"></div></div>
         </div>
-        <div class="code-stat-pill">⭐ <span id="codeScoreBadge">${state.score}</span></div>
-        <div class="code-stat-pill">🔥 24 day streak</div>
+        <div class="code-stat-pill">span id="codeScoreBadge">${state.score}</span></div>
+        <div class="code-stat-pill"> 24 day streak</div>
       </div>
     </div>
     <div class="code-heading">
@@ -3208,26 +2233,6 @@ function renderCodingLevel(level){
   const nextBtn = wrap.querySelector("#codeNextBtn");
   let draggedIndex = null;
 
-  function syncCodeBoardSize(){
-    if(window.innerWidth <= 1100){
-      const width = Math.round(board.getBoundingClientRect().width);
-      if(width > 0){
-        board.style.height = `${width}px`;
-        board.style.aspectRatio = "auto";
-      }
-    }else{
-      board.style.height = "";
-      board.style.aspectRatio = "";
-    }
-  }
-
-  clearCodeBoardResizeHandler();
-  activeCodeBoardResizeHandler = ()=>{
-    window.requestAnimationFrame(syncCodeBoardSize);
-  };
-  window.addEventListener("resize", activeCodeBoardResizeHandler, {passive:true});
-  window.addEventListener("orientationchange", activeCodeBoardResizeHandler, {passive:true});
-
   function currentMission(){ return CODE_MISSIONS[missionIndex]; }
   function isBlocked(r,c){ return currentMission().blocked.some(cell=>cell[0]===r && cell[1]===c); }
   function setSpeech(message, tone=""){
@@ -3258,7 +2263,6 @@ function renderCodingLevel(level){
         board.appendChild(cell);
       }
     }
-    window.requestAnimationFrame(syncCodeBoardSize);
   }
   function renderCommands(){
     if(!commands.length){
@@ -3475,36 +2479,20 @@ function formatWishDate(value){
   catch(e){return "Today";}
 }
 function localWishes(){
-  try{const v=JSON.parse(localStorage.getItem(WISH_STORAGE_KEY)||"[]");return Array.isArray(v)?sortWishesByFastest(v):[];}catch(e){return [];}
+  try{const v=JSON.parse(localStorage.getItem(WISH_STORAGE_KEY)||"[]");return Array.isArray(v)?v:[];}catch(e){return [];}
 }
 function saveLocalWishes(items){
-  localStorage.setItem(WISH_STORAGE_KEY,JSON.stringify(sortWishesByFastest(items).slice(0,80)));
+  localStorage.setItem(WISH_STORAGE_KEY,JSON.stringify(items.slice(0,80)));
 }
-function sortWishesByFastest(rows){
-  return [...rows].sort((a,b)=>{
-    const aTime = Number(a.completion_ms) > 0 ? Number(a.completion_ms) : Number.POSITIVE_INFINITY;
-    const bTime = Number(b.completion_ms) > 0 ? Number(b.completion_ms) : Number.POSITIVE_INFINITY;
-    if(aTime !== bTime) return aTime - bTime;
-    return new Date(a.created_at || 0) - new Date(b.created_at || 0);
-  });
-}
-
 function normalizeWishRows(payload){
   const rows = Array.isArray(payload) ? payload : (Array.isArray(payload?.wishes) ? payload.wishes : []);
-  const normalized = rows.map(row=>{
-    const completionMs = Math.max(0, Number(row.completion_ms)||0);
-    return {
-      id:safeText(row.id,80) || newId(),
-      name:safeText(row.name,40),
-      title:safeText(row.title,55),
-      message:safeText(row.message,280),
-      created_at:row.created_at || new Date().toISOString(),
-      completion_ms:completionMs,
-      completion_time:safeText(row.completion_time,20) || (completionMs ? formatGameTime(completionMs) : "")
-    };
-  }).filter(row=>row.message);
-
-  return sortWishesByFastest(normalized);
+  return rows.map(row=>({
+    id:safeText(row.id,80) || newId(),
+    name:safeText(row.name,40),
+    title:safeText(row.title,55),
+    message:safeText(row.message,280),
+    created_at:row.created_at || new Date().toISOString()
+  })).filter(row=>row.message);
 }
 function jsonpGoogleSheets(url, timeout=9000){
   return new Promise((resolve,reject)=>{
@@ -3519,29 +2507,6 @@ function jsonpGoogleSheets(url, timeout=9000){
     timer=setTimeout(()=>{cleanup();reject(new Error("Google Sheets request timed out"));},timeout);
   });
 }
-
-async function requestGoogleSheetsHealth(){
-  const endpoint=googleSheetsEndpoint();
-  const url=`${endpoint}?action=health&_=${Date.now()}`;
-  try{
-    const res=await fetch(url,{method:"GET",cache:"no-store",redirect:"follow"});
-    if(!res.ok) throw new Error(`Google Sheets health ${res.status}`);
-    return await res.json();
-  }catch(fetchError){
-    console.warn("Direct health request failed; trying JSONP.",fetchError);
-    return await jsonpGoogleSheets(url);
-  }
-}
-
-function timerLeaderboardBackendReady(payload){
-  return !!(
-    payload &&
-    payload.ok !== false &&
-    payload.leaderboard === true &&
-    Number(payload.schema_version) >= 4
-  );
-}
-
 async function requestGoogleSheetsList(){
   const endpoint=googleSheetsEndpoint();
   const url=`${endpoint}?action=list&limit=50&_=${Date.now()}`;
@@ -3558,48 +2523,25 @@ async function loadBirthdayWishes(){
   const mode=String((CONFIG.guestbook||{}).mode||"auto");
   wishBackend = googleSheetsGuestbookReady() && mode !== "local" ? "googleSheets" : "local";
   const status = $("#storageStatus");
-
   if(wishBackend === "googleSheets"){
     try{
-      const health=await requestGoogleSheetsHealth();
-
-      if(!timerLeaderboardBackendReady(health)){
-        throw new Error(
-          "The deployed Apps Script is still the old guestbook version. " +
-          "Deploy the timer leaderboard script as a new Web App version."
-        );
-      }
-
       const payload=await requestGoogleSheetsList();
-      if(payload && payload.ok === false){
-        throw new Error(payload.error || "Google Sheets returned an error");
-      }
-      if(!timerLeaderboardBackendReady(payload)){
-        throw new Error("Google Sheets timer leaderboard schema is not active.");
-      }
-
+      if(payload && payload.ok === false) throw new Error(payload.error || "Google Sheets returned an error");
       cachedWishes=normalizeWishRows(payload);
-      status.textContent="📊 Google Sheets timer + wishes connected";
-      status.classList.add("shared");
+      status.textContent="📊 Shared through Google Sheets";status.classList.add("shared");
     }catch(err){
-      console.error("Timer leaderboard backend check failed.",err);
-      wishBackend="backendOutdated";
-      cachedWishes=localWishes();
-      status.textContent="⚠️ Apps Script timer update required";
-      status.classList.remove("shared");
-      toast("The website is connected to an old Apps Script deployment. Update and redeploy Code.gs.");
+      console.warn("Shared Google Sheets guestbook unavailable; using local storage.",err);
+      wishBackend="local";cachedWishes=localWishes();
+      status.textContent="💾 Stored on this device";status.classList.remove("shared");
+      toast("Google Sheets is unavailable, so the birthday wall is using this device.");
     }
   }else{
     cachedWishes=localWishes();
-    status.textContent=googleSheetsGuestbookReady()
-      ? "💾 Local storage selected"
-      : "🔗 Add Google Sheets Web App URL";
+    status.textContent=googleSheetsGuestbookReady()?"💾 Local storage selected":"🔗 Add Google Sheets Web App URL";
     status.classList.remove("shared");
   }
-
   renderWishWall();
 }
-
 async function postWishToGoogleSheets(wish){
   const endpoint=googleSheetsEndpoint();
   const params=new URLSearchParams({
@@ -3609,127 +2551,43 @@ async function postWishToGoogleSheets(wish){
     title:wish.title,
     message:wish.message,
     created_at:wish.created_at,
-    completion_ms:String(wish.completion_ms || 0),
-    completion_time:wish.completion_time || "",
-    completionMs:String(wish.completion_ms || 0),
-    completionTime:wish.completion_time || "",
-    elapsed_ms:String(wish.completion_ms || 0),
-    website:"",
-    _ : String(Date.now())
+    website:""
   });
-
-  // JSONP works reliably across hosted domains and mobile browsers because
-  // Apps Script responds as a script instead of a cross-origin fetch.
-  const payload=await jsonpGoogleSheets(`${endpoint}?${params.toString()}`);
-
-  if(!timerLeaderboardBackendReady(payload)){
-    throw new Error(
-      "The deployed Apps Script does not support timer leaderboard schema version 4."
-    );
+  try{
+    const res=await fetch(endpoint,{
+      method:"POST",
+      body:params,
+      redirect:"follow"
+    });
+    if(!res.ok) throw new Error(`Could not save (${res.status})`);
+    const payload=await res.json();
+    if(payload && payload.ok === false) throw new Error(payload.error || "Could not save to Google Sheets");
+    return payload?.wish || wish;
+  }catch(err){
+    // Apps Script responses can occasionally be unreadable after a cross-origin redirect.
+    // Retry with the same unique ID in no-cors mode; the server de-duplicates that ID.
+    console.warn("Readable Google Sheets POST failed; retrying safely.",err);
+    await fetch(endpoint,{method:"POST",body:params,mode:"no-cors"});
+    return wish;
   }
-
-  if(payload && payload.ok === false){
-    throw new Error(payload.error || "Could not save to Google Sheets.");
-  }
-
-  const returnedWish=normalizeWishRows({
-    wishes:[payload?.wish || wish]
-  })[0];
-
-  if(
-    !returnedWish ||
-    Number(returnedWish.completion_ms) <= 0 ||
-    !returnedWish.completion_time
-  ){
-    throw new Error(
-      "The timer fields were not returned by Google Sheets. Deploy Apps Script V4."
-    );
-  }
-
-  // Verify that the row is visible through the shared leaderboard endpoint.
-  await new Promise(resolve=>setTimeout(resolve,450));
-  const listPayload=await requestGoogleSheetsList();
-
-  if(!timerLeaderboardBackendReady(listPayload)){
-    throw new Error("The Google Sheets leaderboard could not be verified.");
-  }
-
-  const verified=normalizeWishRows(listPayload).find(row=>row.id===wish.id);
-
-  if(!verified){
-    throw new Error("The new wish was not found in Google Sheets.");
-  }
-
-  if(Number(verified.completion_ms) <= 0 || !verified.completion_time){
-    throw new Error(
-      "The wish exists, but its timer columns are empty. Run setupBirthdaySheet and deploy V3."
-    );
-  }
-
-  return verified;
 }
-
 async function persistBirthdayWish(wish){
-  if(wishBackend === "googleSheets"){
-    return await postWishToGoogleSheets(wish);
-  }
-
-  if(wishBackend === "backendOutdated"){
-    throw new Error(
-      "Apps Script timer leaderboard V4 has not been deployed yet."
-    );
-  }
-
-  const items=localWishes();
-  items.unshift(wish);
-  saveLocalWishes(items);
-  return wish;
+  if(wishBackend === "googleSheets") return await postWishToGoogleSheets(wish);
+  const items=localWishes();items.unshift(wish);saveLocalWishes(items);return wish;
 }
 function renderWishWall(){
   const wall=$("#wishWall");
   if(!wall) return;
   wall.innerHTML="";
-
-  cachedWishes = sortWishesByFastest(Array.isArray(cachedWishes)?cachedWishes:[]);
-  const list=cachedWishes;
+  const list=Array.isArray(cachedWishes)?cachedWishes:[];
   $("#wishCount").textContent=`${list.length} ${list.length===1?"note":"notes"}`;
-
-  if(!list.length){
-    wall.innerHTML='<div class="wish-empty">Be the first finisher to leave Dhai a birthday note.</div>';
-    return;
-  }
-
-  const medals=["🥇","🥈","🥉"];
-
-  list.forEach((wish,index)=>{
-    const note=document.createElement("article");
-    note.className=`wish-note ${index===0 && Number(wish.completion_ms)>0 ? "fastest" : ""}`.trim();
-
-    const rank=document.createElement("span");
-    rank.className="wish-rank";
-    rank.textContent=medals[index] || `#${index+1}`;
-
-    const title=document.createElement("strong");
-    title.textContent=safeText(wish.title,55)||"A birthday note";
-
-    const message=document.createElement("p");
-    message.textContent=safeText(wish.message,280);
-
-    const timeLine=document.createElement("div");
-    timeLine.className="wish-time-line";
-
-    const timeBadge=document.createElement("span");
-    timeBadge.className="wish-time-badge";
-    timeBadge.textContent=Number(wish.completion_ms)>0
-      ? `⏱️ ${safeText(wish.completion_time,20) || formatGameTime(wish.completion_ms)}`
-      : "⏱️ No recorded time";
-
-    const meta=document.createElement("footer");
-    meta.textContent=`— ${safeText(wish.name,40)||"Anonymous friend"} · ${formatWishDate(wish.created_at)}`;
-
-    timeLine.appendChild(timeBadge);
-    note.append(rank,title,message,timeLine,meta);
-    wall.appendChild(note);
+  if(!list.length){wall.innerHTML='<div class="wish-empty">Be the first person to leave Dhai a birthday note.</div>';return;}
+  list.forEach(wish=>{
+    const note=document.createElement("article");note.className="wish-note";
+    const title=document.createElement("strong");title.textContent=safeText(wish.title,55)||"A birthday note";
+    const message=document.createElement("p");message.textContent=safeText(wish.message,280);
+    const meta=document.createElement("footer");meta.textContent=`— ${safeText(wish.name,40)||"Anonymous friend"} · ${formatWishDate(wish.created_at)}`;
+    note.append(title,message,meta);wall.appendChild(note);
   });
 }
 function getCapsuleHistory(){
@@ -3793,79 +2651,21 @@ function initCelebrationFeatures(){
       const name=safeText($("#wishName").value,40),title=safeText($("#wishTitle").value,55),message=safeText($("#messageText").value,280);
       if(message.length<3){toast("Write a slightly longer birthday message first.");return;}
       const btn=$("#saveWishBtn");btn.disabled=true;btn.textContent="Placing note…";
-      const completionMs = Math.max(1, Number(state.timerCompletedMs) || getCurrentTimerMs() || 1);
-      const wish={
-        id:newId(),
-        name,
-        title,
-        message,
-        created_at:new Date().toISOString(),
-        completion_ms:completionMs,
-        completion_time:formatGameTime(completionMs)
-      };
+      const wish={id:newId(),name,title,message,created_at:new Date().toISOString()};
       try{
-        const saved=await persistBirthdayWish(wish);cachedWishes=sortWishesByFastest([saved,...cachedWishes]).slice(0,50);renderWishWall();
+        const saved=await persistBirthdayWish(wish);cachedWishes.unshift(saved);cachedWishes=cachedWishes.slice(0,50);renderWishWall();
         $("#messageText").value="";$("#wishTitle").value="";$("#wishCharCount").textContent="0 / 280";lastWishSubmitAt=Date.now();toast("Your birthday note is now on Dhai’s wall. 💌");beep(820,.16);
-      }catch(err){
-        console.error(err);
-        const message=String(err?.message || err || "");
-        if(message.includes("Apps Script") || message.includes("completion_")){
-          toast("Timer was not saved: deploy Apps Script V4 and run setupBirthdaySheet.");
-        }else{
-          toast("The note could not be saved. Please try again.");
-        }
-      }
+      }catch(err){console.error(err);toast("The note could not be saved. Please try again.");}
       finally{btn.disabled=false;btn.textContent="Place on the wall 💌";}
     });
   }
   loadBirthdayWishes();
 }
 
-
-document.addEventListener("visibilitychange", ()=>{
-  const gameIsOpen = gameShell && !gameShell.classList.contains("hidden");
-  const gameIsFinished = endScreen && !endScreen.classList.contains("hidden");
-
-  if(document.hidden){
-    if(state.timerRunning) pauseGameTimer();
-  }else if(gameIsOpen && !gameIsFinished && state.timerCompletedMs == null){
-    startGameTimer();
-  }
-});
-
-window.addEventListener("beforeunload", ()=>{
-  if(state.timerRunning){
-    state.timerElapsedMs = getCurrentTimerMs();
-    state.timerRunning = false;
-    state.timerStartedAt = 0;
-  }
-  saveProgress();
-});
-
-
 /* Events */
-function isTypingField(target){
-  return !!(
-    target &&
-    (
-      target.tagName === "INPUT" ||
-      target.tagName === "TEXTAREA" ||
-      target.tagName === "SELECT" ||
-      target.isContentEditable
-    )
-  );
-}
-
 window.addEventListener("keydown", e=>{
-  // Never intercept spaces, letters, or arrow keys while the visitor is
-  // typing a birthday wish or an answer on a phone/tablet.
-  if(isTypingField(e.target)) return;
-
   keys[e.key] = true;
-
-  if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"," "].includes(e.key)){
-    e.preventDefault();
-  }
+  if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"," "].includes(e.key)) e.preventDefault();
 
   if((e.key.toLowerCase() === "e" || e.key === " ") &&
      gameShell && !gameShell.classList.contains("hidden") &&
@@ -3873,11 +2673,7 @@ window.addEventListener("keydown", e=>{
     handleAdventureAction(LEVELS[state.currentLevel]);
   }
 });
-
-window.addEventListener("keyup", e=>{
-  if(isTypingField(e.target)) return;
-  keys[e.key] = false;
-});
+window.addEventListener("keyup", e=> keys[e.key] = false);
 
 $("#startBtn").addEventListener("click", startGame);
 $("#resetBtn").addEventListener("click", restartAll);
@@ -3904,7 +2700,6 @@ $("#copyBtn").addEventListener("click", async()=>{
 });
 
 loadProgress();
-updateTimerDisplay();
 initSiteShapes();
 initHeroShapes();
 
