@@ -1343,7 +1343,7 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
     <div class="hero-layer" id="heroLayer"></div>
     <div class="hero-copy">
       <div class="kicker">Birthday Celebration Game</div>
-      <h1><span>Dhai Adventure</span><br>Celebrating Dhai's 24th Birthday</h1>
+      <h1><span>Dhai Adventure</span><br>Celebrating Dhai's 24th (+) Birthday</h1>
       <p>
         On her 24th birthday, Dhai wakes inside a dream world with a broken Inner Compass.
         Its seven missing pieces represent Visual Logic, Courage, Trust, Curiosity, Focus, Memory, and Logic.
@@ -1351,28 +1351,21 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
       </p>
      
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <button class="btn btn-primary" id="startBtn">Start Dhai Adventure </button>
+        <button class="btn btn-primary" id="startBtn">Start Dhai Adventure 🚀</button>
       </div>
-      <div class="character-role-strip">
-        <span class="role-chip"><img src="avatar_thumbs.png" alt="">Dhai · Main Character</span>
-      </div>
-      <div class="level-pills">
-        <span class="pill">1. Visual Logic — TPA Puzzle</span>
-        <span class="pill">2. Flower Garden — Courage</span>
-        <span class="pill">3. Arabian Desert — Trust</span>
-        <span class="pill">4. Riddle Room — Curiosity</span>
-        <span class="pill">5. Spot the Difference — Focus</span>
-        <span class="pill">6. Memory Match — Memory</span>
-        <span class="pill">7. Code Playground — Logic</span>
+ 
+       <div class="level-pills">
+        <span class="pill">Made with special ❤️ for Dhai's birthday by Mbak Dwi—Dhai's beloved sister in spirit.</span>
+       
       </div>
     </div>
     <div class="hero-visual-column">
       <div class="avatar-showcase">
         <div class="birthday-orbit"></div>
-        <span class="avatar-floating-label one">🎂 Turning 24</span>
+        <span class="avatar-floating-label one"> Turning 24++ </span>
         <span class="avatar-floating-label two">✨ Birthday Quest</span>
-        <span class="avatar-floating-label three">🎁 Special Gift</span>
-        <img src="avatar_jump.png" class="avatar-main" alt="Dhai main character">
+        <span class="avatar-floating-label three"> Special Gift</span>
+        <img src="assets/avatar_jump.png" class="avatar-main" alt="Dhai main character">
       </div>
     </div>
   </section>
@@ -1381,7 +1374,7 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
     <div class="hud">
       <div class="hud-box hud-avatar">
         <small>Main Character</small>
-        <strong><img src="avatar_idle.png" alt="avatar"></strong>
+        <strong><img src="assets/avatar_idle.png" alt="avatar"></strong>
       </div>
       <div class="hud-box"><small>Level</small><strong id="hudLevel">1 / 7</strong></div>
       <div class="hud-box"><small>Mode</small><strong id="hudMode">Adventure</strong></div>
@@ -1406,7 +1399,7 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
     </p>
     <div class="finish-time-card">⏱️ Your completion time: <strong id="finalCompletionTime">00:00</strong></div>
     <div class="reward-panel">
-      <img class="reward-art" src="avatar_celebrate.png" alt="Dhai celebrating">
+      <img class="reward-art" src="assets/avatar_celebrate.png" alt="Dhai celebrating">
       <h3>Your Final Birthday Gift Is Unlocked</h3>
       <p>Show this code to the gift giver:</p>
       <strong style="font-size:24px;color:#6c5ce7;letter-spacing:.08em" id="giftCode">DHAI-24-BDAY</strong>
@@ -1446,10 +1439,10 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
         <p>Your note will appear on the shared Google Sheets birthday wall after the Apps Script URL is connected. If the connection is unavailable, it is kept safely on this device.</p>
         <form class="wish-form" id="wishForm">
           <div class="wish-form-row">
-            <input class="wish-input" id="wishName" maxlength="40" placeholder="Your name (optional)" autocomplete="name" enterkeyhint="next">
-            <input class="wish-input" id="wishTitle" maxlength="55" placeholder="Short title, e.g. Happy Birthday!" enterkeyhint="next">
+            <input class="wish-input" id="wishName" maxlength="40" placeholder="Your name (optional)" autocomplete="name">
+            <input class="wish-input" id="wishTitle" maxlength="55" placeholder="Short title, e.g. Happy Birthday!">
           </div>
-          <textarea class="wish-textarea" id="messageText" maxlength="280" required placeholder="Write your birthday message for Dhai…" enterkeyhint="done"></textarea>
+          <textarea class="wish-textarea" id="messageText" maxlength="280" required placeholder="Write your birthday message for Dhai…"></textarea>
           <div class="wish-meta">
             <span class="storage-status" id="storageStatus">💾 Checking storage…</span>
             <span class="wish-finish-time">🏁 Finish time: <strong id="wishFinishTime">00:00</strong></span>
@@ -1494,20 +1487,20 @@ const CONFIG = {
 };
 
 const ASSET_PATHS = {
-  avatarIdle:"avatar_idle.png",
-  avatarJump:"avatar_jump.png",
-  avatarCelebrate:"avatar_celebrate.png",
-  avatarSurprise:"avatar_surprise.png",
-  avatarWalkLeft:"avatar_walk_left.png",
-  avatarWalkRight:"avatar_walk_right.png",
-  avatarThumbs:"avatar_thumbs.png",
-  dwiWave:"dwi_wave.png",
-  dwiSurprise:"dwi_surprise.png",
-  gardenBg:"garden_bg.png",
-  desertBg:"desert_bg.png",
-  camelWalk1:"camel_walk1.png",
-  camelWalk2:"camel_walk2.png",
-  camelHappy:"camel_happy.png"
+  avatarIdle:"assets/avatar_idle.png",
+  avatarJump:"assets/avatar_jump.png",
+  avatarCelebrate:"assets/avatar_celebrate.png",
+  avatarSurprise:"assets/avatar_surprise.png",
+  avatarWalkLeft:"assets/avatar_walk_left.png",
+  avatarWalkRight:"assets/avatar_walk_right.png",
+  avatarThumbs:"assets/avatar_thumbs.png",
+  dwiWave:"assets/dwi_wave.png",
+  dwiSurprise:"assets/dwi_surprise.png",
+  gardenBg:"assets/garden_bg.png",
+  desertBg:"assets/desert_bg.png",
+  camelWalk1:"assets/camel_walk1.png",
+  camelWalk2:"assets/camel_walk2.png",
+  camelHappy:"assets/camel_happy.png"
 };
 const IMAGES = {};
 
@@ -3519,29 +3512,6 @@ function jsonpGoogleSheets(url, timeout=9000){
     timer=setTimeout(()=>{cleanup();reject(new Error("Google Sheets request timed out"));},timeout);
   });
 }
-
-async function requestGoogleSheetsHealth(){
-  const endpoint=googleSheetsEndpoint();
-  const url=`${endpoint}?action=health&_=${Date.now()}`;
-  try{
-    const res=await fetch(url,{method:"GET",cache:"no-store",redirect:"follow"});
-    if(!res.ok) throw new Error(`Google Sheets health ${res.status}`);
-    return await res.json();
-  }catch(fetchError){
-    console.warn("Direct health request failed; trying JSONP.",fetchError);
-    return await jsonpGoogleSheets(url);
-  }
-}
-
-function timerLeaderboardBackendReady(payload){
-  return !!(
-    payload &&
-    payload.ok !== false &&
-    payload.leaderboard === true &&
-    Number(payload.schema_version) >= 4
-  );
-}
-
 async function requestGoogleSheetsList(){
   const endpoint=googleSheetsEndpoint();
   const url=`${endpoint}?action=list&limit=50&_=${Date.now()}`;
@@ -3558,48 +3528,25 @@ async function loadBirthdayWishes(){
   const mode=String((CONFIG.guestbook||{}).mode||"auto");
   wishBackend = googleSheetsGuestbookReady() && mode !== "local" ? "googleSheets" : "local";
   const status = $("#storageStatus");
-
   if(wishBackend === "googleSheets"){
     try{
-      const health=await requestGoogleSheetsHealth();
-
-      if(!timerLeaderboardBackendReady(health)){
-        throw new Error(
-          "The deployed Apps Script is still the old guestbook version. " +
-          "Deploy the timer leaderboard script as a new Web App version."
-        );
-      }
-
       const payload=await requestGoogleSheetsList();
-      if(payload && payload.ok === false){
-        throw new Error(payload.error || "Google Sheets returned an error");
-      }
-      if(!timerLeaderboardBackendReady(payload)){
-        throw new Error("Google Sheets timer leaderboard schema is not active.");
-      }
-
+      if(payload && payload.ok === false) throw new Error(payload.error || "Google Sheets returned an error");
       cachedWishes=normalizeWishRows(payload);
-      status.textContent="📊 Google Sheets timer + wishes connected";
-      status.classList.add("shared");
+      status.textContent="📊 Shared through Google Sheets";status.classList.add("shared");
     }catch(err){
-      console.error("Timer leaderboard backend check failed.",err);
-      wishBackend="backendOutdated";
-      cachedWishes=localWishes();
-      status.textContent="⚠️ Apps Script timer update required";
-      status.classList.remove("shared");
-      toast("The website is connected to an old Apps Script deployment. Update and redeploy Code.gs.");
+      console.warn("Shared Google Sheets guestbook unavailable; using local storage.",err);
+      wishBackend="local";cachedWishes=localWishes();
+      status.textContent="💾 Stored on this device";status.classList.remove("shared");
+      toast("Google Sheets is unavailable, so the birthday wall is using this device.");
     }
   }else{
     cachedWishes=localWishes();
-    status.textContent=googleSheetsGuestbookReady()
-      ? "💾 Local storage selected"
-      : "🔗 Add Google Sheets Web App URL";
+    status.textContent=googleSheetsGuestbookReady()?"💾 Local storage selected":"🔗 Add Google Sheets Web App URL";
     status.classList.remove("shared");
   }
-
   renderWishWall();
 }
-
 async function postWishToGoogleSheets(wish){
   const endpoint=googleSheetsEndpoint();
   const params=new URLSearchParams({
@@ -3611,79 +3558,29 @@ async function postWishToGoogleSheets(wish){
     created_at:wish.created_at,
     completion_ms:String(wish.completion_ms || 0),
     completion_time:wish.completion_time || "",
-    completionMs:String(wish.completion_ms || 0),
-    completionTime:wish.completion_time || "",
-    elapsed_ms:String(wish.completion_ms || 0),
-    website:"",
-    _ : String(Date.now())
+    website:""
   });
-
-  // JSONP works reliably across hosted domains and mobile browsers because
-  // Apps Script responds as a script instead of a cross-origin fetch.
-  const payload=await jsonpGoogleSheets(`${endpoint}?${params.toString()}`);
-
-  if(!timerLeaderboardBackendReady(payload)){
-    throw new Error(
-      "The deployed Apps Script does not support timer leaderboard schema version 4."
-    );
+  try{
+    const res=await fetch(endpoint,{
+      method:"POST",
+      body:params,
+      redirect:"follow"
+    });
+    if(!res.ok) throw new Error(`Could not save (${res.status})`);
+    const payload=await res.json();
+    if(payload && payload.ok === false) throw new Error(payload.error || "Could not save to Google Sheets");
+    return payload?.wish || wish;
+  }catch(err){
+    // Apps Script responses can occasionally be unreadable after a cross-origin redirect.
+    // Retry with the same unique ID in no-cors mode; the server de-duplicates that ID.
+    console.warn("Readable Google Sheets POST failed; retrying safely.",err);
+    await fetch(endpoint,{method:"POST",body:params,mode:"no-cors"});
+    return wish;
   }
-
-  if(payload && payload.ok === false){
-    throw new Error(payload.error || "Could not save to Google Sheets.");
-  }
-
-  const returnedWish=normalizeWishRows({
-    wishes:[payload?.wish || wish]
-  })[0];
-
-  if(
-    !returnedWish ||
-    Number(returnedWish.completion_ms) <= 0 ||
-    !returnedWish.completion_time
-  ){
-    throw new Error(
-      "The timer fields were not returned by Google Sheets. Deploy Apps Script V4."
-    );
-  }
-
-  // Verify that the row is visible through the shared leaderboard endpoint.
-  await new Promise(resolve=>setTimeout(resolve,450));
-  const listPayload=await requestGoogleSheetsList();
-
-  if(!timerLeaderboardBackendReady(listPayload)){
-    throw new Error("The Google Sheets leaderboard could not be verified.");
-  }
-
-  const verified=normalizeWishRows(listPayload).find(row=>row.id===wish.id);
-
-  if(!verified){
-    throw new Error("The new wish was not found in Google Sheets.");
-  }
-
-  if(Number(verified.completion_ms) <= 0 || !verified.completion_time){
-    throw new Error(
-      "The wish exists, but its timer columns are empty. Run setupBirthdaySheet and deploy V3."
-    );
-  }
-
-  return verified;
 }
-
 async function persistBirthdayWish(wish){
-  if(wishBackend === "googleSheets"){
-    return await postWishToGoogleSheets(wish);
-  }
-
-  if(wishBackend === "backendOutdated"){
-    throw new Error(
-      "Apps Script timer leaderboard V4 has not been deployed yet."
-    );
-  }
-
-  const items=localWishes();
-  items.unshift(wish);
-  saveLocalWishes(items);
-  return wish;
+  if(wishBackend === "googleSheets") return await postWishToGoogleSheets(wish);
+  const items=localWishes();items.unshift(wish);saveLocalWishes(items);return wish;
 }
 function renderWishWall(){
   const wall=$("#wishWall");
@@ -3806,15 +3703,7 @@ function initCelebrationFeatures(){
       try{
         const saved=await persistBirthdayWish(wish);cachedWishes=sortWishesByFastest([saved,...cachedWishes]).slice(0,50);renderWishWall();
         $("#messageText").value="";$("#wishTitle").value="";$("#wishCharCount").textContent="0 / 280";lastWishSubmitAt=Date.now();toast("Your birthday note is now on Dhai’s wall. 💌");beep(820,.16);
-      }catch(err){
-        console.error(err);
-        const message=String(err?.message || err || "");
-        if(message.includes("Apps Script") || message.includes("completion_")){
-          toast("Timer was not saved: deploy Apps Script V4 and run setupBirthdaySheet.");
-        }else{
-          toast("The note could not be saved. Please try again.");
-        }
-      }
+      }catch(err){console.error(err);toast("The note could not be saved. Please try again.");}
       finally{btn.disabled=false;btn.textContent="Place on the wall 💌";}
     });
   }
@@ -3844,28 +3733,9 @@ window.addEventListener("beforeunload", ()=>{
 
 
 /* Events */
-function isTypingField(target){
-  return !!(
-    target &&
-    (
-      target.tagName === "INPUT" ||
-      target.tagName === "TEXTAREA" ||
-      target.tagName === "SELECT" ||
-      target.isContentEditable
-    )
-  );
-}
-
 window.addEventListener("keydown", e=>{
-  // Never intercept spaces, letters, or arrow keys while the visitor is
-  // typing a birthday wish or an answer on a phone/tablet.
-  if(isTypingField(e.target)) return;
-
   keys[e.key] = true;
-
-  if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"," "].includes(e.key)){
-    e.preventDefault();
-  }
+  if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"," "].includes(e.key)) e.preventDefault();
 
   if((e.key.toLowerCase() === "e" || e.key === " ") &&
      gameShell && !gameShell.classList.contains("hidden") &&
@@ -3873,11 +3743,7 @@ window.addEventListener("keydown", e=>{
     handleAdventureAction(LEVELS[state.currentLevel]);
   }
 });
-
-window.addEventListener("keyup", e=>{
-  if(isTypingField(e.target)) return;
-  keys[e.key] = false;
-});
+window.addEventListener("keyup", e=> keys[e.key] = false);
 
 $("#startBtn").addEventListener("click", startGame);
 $("#resetBtn").addEventListener("click", restartAll);
