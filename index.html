@@ -1351,10 +1351,10 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
       </p>
      
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <button class="btn btn-primary" id="startBtn">Start Dhai Adventure 🚀</button>
+        <button class="btn btn-primary" id="startBtn">Start Dhai Adventure </button>
       </div>
       <div class="character-role-strip">
-        <span class="role-chip"><img src="assets/avatar_thumbs.png" alt="">Dhai · Main Character</span>
+        <span class="role-chip"><img src="avatar_thumbs.png" alt="">Dhai · Main Character</span>
       </div>
       <div class="level-pills">
         <span class="pill">1. Visual Logic — TPA Puzzle</span>
@@ -1372,7 +1372,7 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
         <span class="avatar-floating-label one">🎂 Turning 24</span>
         <span class="avatar-floating-label two">✨ Birthday Quest</span>
         <span class="avatar-floating-label three">🎁 Special Gift</span>
-        <img src="assets/avatar_jump.png" class="avatar-main" alt="Dhai main character">
+        <img src="avatar_jump.png" class="avatar-main" alt="Dhai main character">
       </div>
     </div>
   </section>
@@ -1381,7 +1381,7 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
     <div class="hud">
       <div class="hud-box hud-avatar">
         <small>Main Character</small>
-        <strong><img src="assets/avatar_idle.png" alt="avatar"></strong>
+        <strong><img src="avatar_idle.png" alt="avatar"></strong>
       </div>
       <div class="hud-box"><small>Level</small><strong id="hudLevel">1 / 7</strong></div>
       <div class="hud-box"><small>Mode</small><strong id="hudMode">Adventure</strong></div>
@@ -1406,7 +1406,7 @@ footer{text-align:center;color:#7b7a90;font-size:13px;margin-top:17px}
     </p>
     <div class="finish-time-card">⏱️ Your completion time: <strong id="finalCompletionTime">00:00</strong></div>
     <div class="reward-panel">
-      <img class="reward-art" src="assets/avatar_celebrate.png" alt="Dhai celebrating">
+      <img class="reward-art" src="avatar_celebrate.png" alt="Dhai celebrating">
       <h3>Your Final Birthday Gift Is Unlocked</h3>
       <p>Show this code to the gift giver:</p>
       <strong style="font-size:24px;color:#6c5ce7;letter-spacing:.08em" id="giftCode">DHAI-24-BDAY</strong>
@@ -1489,25 +1489,25 @@ const CONFIG = {
     // mode: "auto" uses Google Sheets when the URL is filled, otherwise localStorage.
     // You may also force "googleSheets" or "local".
     mode: "auto",
-    googleAppsScriptUrl: "https://script.google.com/macros/s/AKfycbwBiEbeBpZ-YHTQweD8CG6sJd1Qt1VxjgWca_3WyFXOeebxYHRIW7aaKcBKa2v01Lw/exec"
+    googleAppsScriptUrl: "https://script.google.com/macros/s/AKfycbyFq7S4Berhg4-gema8zLsmTHjktVOFYmJm5hK8dlW09mwjLgas_ME3a7k3F8Ay928/exec"
   }
 };
 
 const ASSET_PATHS = {
-  avatarIdle:"assets/avatar_idle.png",
-  avatarJump:"assets/avatar_jump.png",
-  avatarCelebrate:"assets/avatar_celebrate.png",
-  avatarSurprise:"assets/avatar_surprise.png",
-  avatarWalkLeft:"assets/avatar_walk_left.png",
-  avatarWalkRight:"assets/avatar_walk_right.png",
-  avatarThumbs:"assets/avatar_thumbs.png",
-  dwiWave:"assets/dwi_wave.png",
-  dwiSurprise:"assets/dwi_surprise.png",
-  gardenBg:"assets/garden_bg.png",
-  desertBg:"assets/desert_bg.png",
-  camelWalk1:"assets/camel_walk1.png",
-  camelWalk2:"assets/camel_walk2.png",
-  camelHappy:"assets/camel_happy.png"
+  avatarIdle:"avatar_idle.png",
+  avatarJump:"avatar_jump.png",
+  avatarCelebrate:"avatar_celebrate.png",
+  avatarSurprise:"avatar_surprise.png",
+  avatarWalkLeft:"avatar_walk_left.png",
+  avatarWalkRight:"avatar_walk_right.png",
+  avatarThumbs:"avatar_thumbs.png",
+  dwiWave:"dwi_wave.png",
+  dwiSurprise:"dwi_surprise.png",
+  gardenBg:"garden_bg.png",
+  desertBg:"desert_bg.png",
+  camelWalk1:"camel_walk1.png",
+  camelWalk2:"camel_walk2.png",
+  camelHappy:"camel_happy.png"
 };
 const IMAGES = {};
 
@@ -3460,7 +3460,7 @@ let lastWishSubmitAt = 0;
 
 function googleSheetsGuestbookReady(){
   const g = CONFIG.guestbook || {};
-  const url = String(g.googleAppsScriptUrl || "https://script.google.com/macros/s/AKfycbwBiEbeBpZ-YHTQweD8CG6sJd1Qt1VxjgWca_3WyFXOeebxYHRIW7aaKcBKa2v01Lw/exec").trim();
+  const url = String(g.googleAppsScriptUrl || "https://script.google.com/macros/s/AKfycbyFq7S4Berhg4-gema8zLsmTHjktVOFYmJm5hK8dlW09mwjLgas_ME3a7k3F8Ay928/exec").trim();
   return /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec(?:\?.*)?$/.test(url);
 }
 function googleSheetsEndpoint(){
